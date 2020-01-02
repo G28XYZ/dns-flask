@@ -4,7 +4,6 @@ from flask import Flask, render_template, request, jsonify
 from app import app
 import requests
 from bs4 import BeautifulSoup
-from selenium import webdriver
 import time
 import threading
 import re
@@ -20,7 +19,9 @@ from vk_api.audio import VkAudio
 sessions = dict()
 url_showEvents = 'https://line-02.ccf4ab51771cacd46d.com/line/mobile/showEvents?lang=ru&lineType=live&skId=1'
 
-vk_session = vk_api.VkApi('+79094537074', 'royal2000')
+vk_number = os.environ.get('VK_NUMBER')
+vk_password = os.environ.get('VK_PASSWORD')
+vk_session = vk_api.VkApi(str(vk_number), vk_password)
 vk_session.auth()
 vk = vk_session.get_api()
 vk_music = VkAudio(vk_session)
