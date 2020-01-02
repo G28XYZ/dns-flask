@@ -1,143 +1,787 @@
 <!DOCTYPE html>
 
 <html>
-
+    
 <head>
     <title id="title"></title>
-    <style>
-    body{
-        background-image: url();
-        background-size: 100% 100%;
-        background-repeat : no-repeat;
-    }
- /*   div {
-        position: absolute; /* абсолютное позиционирование элементов 
-        width: 100px; /* ширина элемента 
-        height: 100px;  высота элемента 
-        }
-    .table{
-        top: 3em;  смещение от вержнего края 
-        right: 50%; смещение от правого края 
-    } */
-    td.table__col {
-        border: 2px solid black;
-        ;
-    }
-    td.in {
-        text-align:center;
-        font-size: 17px;
-        font-family: IrisUPC; /*IrisUPC, OCR-A BT, Europe_Ext*/
-        width: 50px;
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+    <style type="text/css">
+
         
+body{
+    background-image: url();
+    background-size: 100% 100%;
+    background-repeat : no-repeat;
+    
+}
+
+
+table {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #666;
+  text-shadow: 1px 1px 0px #fff;
+  background: #eaebec;
+  border: #ccc 1px solid;
+}
+
+table th {
+  padding: 15px 35px;
+  border-left:1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+  background: #ededed;
+}
+
+table th:first-child{  
+  border-left:none;  
+}
+
+table tr {
+  text-align: center;
+  padding-left: 20px;
+}
+
+table td:first-child {
+  text-align: center;
+}
+
+table td {
+  border-top: 1px solid #ffffff;
+  border-bottom: 1px solid #e0e0e0;
+  border-left: 1px solid #e0e0e0;
+  background: #fafafa;
+  background: -webkit-gradient(linear, left top, left bottom, from(#fbfbfb), to(#fafafa));
+  background: -moz-linear-gradient(top, #fbfbfb, #fafafa);
+  text-align: center;
+}
+
+table tr:last-child td {
+  border-bottom: 0;
+}
+
+table tr:last-child td:first-child {
+  -moz-border-radius-bottomleft: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+table tr:last-child td:last-child {
+  -moz-border-radius-bottomright: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+table tr:hover td {
+  background: #f2f2f2;
+  background: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#f0f0f0));
+  background: -moz-linear-gradient(top, #f2f2f2, #f0f0f0);
+}
+
+th.NO_gif {
+    background-image: url(http://screenshot.ru/upload/images/2017/10/23/output_tktcDU2a8bd.gif);
+/*     https://i.gifer.com/747o.gif, https://www.hibrido.com.br/wp-content/uploads/2018/03/artigo2.gif,
+    https://cdn.dribbble.com/users/61699/screenshots/3517380/loader_test.gif,
+    https://www.mrplan.es/experiencias/images/loading_23.gif */
+    background-size: 100% 100%;
+    background-repeat : no-repeat;
+    width: 120px;
+    
+}
+
+th.YES_gif {
+    background-image: url(https://cdn.dribbble.com/users/251321/screenshots/2807146/plus.gif);
+/*     https://thumbs.gfycat.com/EasygoingWastefulIridescentshark-size_restricted.gif, https://cdn.dribbble.com/users/328354/screenshots/1807697/check-animation.gif,
+    https://cdn.dribbble.com/users/251321/screenshots/2807146/plus.gif */
+    background-size: 100% 100%;
+    background-repeat : no-repeat;
+    width: 50px;
+    
+}
+
+
+/* DETAILS */
+
+
+summary::-webkit-details-marker {
+  display: none
+}
+
+summary:after {
+  background: #01d863; 
+  border-radius: 5px; 
+  content: "+"; 
+  color: #fff; 
+  float: left; 
+  font-size: 17px; 
+  /*margin: 0px 10px 0 0; */
+  padding: 0; 
+  text-align: center; 
+  width: 20px;
+}
+
+details[open] summary:after {
+  content: "-";
+}
+
+details {
+    border: 1px solid #E1E1E1;
+    border-radius: 5px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .4);
+    color: #363636;
+    margin: 0 0 .4em;
+    padding: 1%;
+
+}
+
+details:hover {
+    cursor: pointer;
+}
+
+/* DETAILS */
+
+
+td.table__col {
+    border: 2px solid black;
+    ;
+}
+td.in {
+    text-align:center;
+    font-size: 17px;
+    font-family: IrisUPC; /*IrisUPC, OCR-A BT, Europe_Ext*/
+    width: 50px;
+    
+}
+
+td.MATH {
+    text-align:center;
+    font-size: 16px;
+    font-family: Europe_Ext;
+    width: 180px;
+}
+
+th.NO_gif {
+    background-image: url(http://screenshot.ru/upload/images/2017/10/23/output_tktcDU2a8bd.gif);
+    /*https://i.gifer.com/747o.gif, https://www.hibrido.com.br/wp-content/uploads/2018/03/artigo2.gif,
+    https://cdn.dribbble.com/users/61699/screenshots/3517380/loader_test.gif,
+    https://www.mrplan.es/experiencias/images/loading_23.gif*/
+    background-size: 100% 100%;
+    background-repeat : no-repeat;
+    width: 120px;
+    
+}
+
+th.YES_gif {
+    background-image: url(https://cdn.dribbble.com/users/251321/screenshots/2807146/plus.gif);
+    /*https://thumbs.gfycat.com/EasygoingWastefulIridescentshark-size_restricted.gif, https://cdn.dribbble.com/users/328354/screenshots/1807697/check-animation.gif,
+    https://cdn.dribbble.com/users/251321/screenshots/2807146/plus.gif*/
+    background-size: 100% 100%;
+    background-repeat : no-repeat;
+    width: 50px;
+    
+}
+
+/* Global Reset */
+
+.tab {
+    overflow: hidden;
+    border: 1px solid #4CAF50;
+    background-color: #C8E6C9;
+}
+
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+
+
+.tab button:hover {
+    background-color: #01d863;
+}
+
+
+.tab button.active {
+    background-color: #01d863;
+    color: #fff;
+}
+
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #4CAF50;
+    border-top: none;
+}
+
+/* Start  styling the page */
+.container-audio {
+    position: relative;
+    width: 550px;
+    height: 100px;
+    background: #FFF8E7;
+    background: linear-gradient(0deg, #FFFFFF, #ffffff);
+    border-radius: 20px;
+    margin: 10px;
+}
+
+.container-audio::before, .container-audio::after{
+    content: '';
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    background: linear-gradient(45deg, #ff00ee, #0000ff, #00ff00, #ff0000, #ff00ee, #0000ff, #00ff00, #ffff00, #ff0000);
+    background-size: 400%;
+    max-width: calc(550px - 2px);
+    max-height: calc(120px - 2px);
+    height: calc(100%);
+    width: calc(100%);
+    border-radius: 20px;
+    z-index: -1;
+    animation: animate 60s linear infinite;
+}
+
+.container-audio::after, .but::after {
+    filter: blur(5px);
+}
+
+.playlist {
+    position: relative;
+    left: 20px;
+    width: 550px;
+    height: 200px;
+    background: #fff; /* цвет фона, белый */
+    /*border: 1px solid #C1C1C1;  размер и цвет границы блока */
+    /*overflow-x: scroll; прокрутка по горизонтали */
+    overflow: auto;
     }
 
-    td.MATH {
-        text-align:center;
-        font-size: 16px;
-        font-family: Europe_Ext;
-        width: 180px;
-    }
+#find_music_container {
+    position: relative;
+    left: 20px;
+    margin: 10px;
+}
 
-    th.NO_gif {
-        background-image: url(http://screenshot.ru/upload/images/2017/10/23/output_tktcDU2a8bd.gif);
-        /*https://i.gifer.com/747o.gif, https://www.hibrido.com.br/wp-content/uploads/2018/03/artigo2.gif,
-        https://cdn.dribbble.com/users/61699/screenshots/3517380/loader_test.gif,
-        https://www.mrplan.es/experiencias/images/loading_23.gif*/
-        background-size: 100% 100%;
-        background-repeat : no-repeat;
-        width: 120px;
-        
-    }
+#row_playlist {
+    position: relative;
+    border: 1px solid #73AD21;
+    border-radius: 20px;
+    overflow: auto;
+    text-align: center;
+    z-index: 1;
+    
+}
 
-    th.YES_gif {
-        background-image: url(https://cdn.dribbble.com/users/251321/screenshots/2807146/plus.gif);
-        /*https://thumbs.gfycat.com/EasygoingWastefulIridescentshark-size_restricted.gif, https://cdn.dribbble.com/users/328354/screenshots/1807697/check-animation.gif,
-        https://cdn.dribbble.com/users/251321/screenshots/2807146/plus.gif*/
-        background-size: 100% 100%;
-        background-repeat : no-repeat;
-        width: 50px;
-        
+#text_playlist {
+    position: relative;
+    top: 5px;
+}
+
+#row_playlist:hover {
+    background: #ebffe8;
+}
+
+#time_song {
+    margin: 7px;
+    float:right;
+}
+
+#text_song_container {
+    content: '';
+    font-size: 20px;
+    position: absolute;
+    top: 30px;
+    left: 210px;
+/*     border: 1px solid #000000; */
+    max-width: calc(150 - 2px);
+    max-height: calc(50 - 2px);
+    height: calc(50%);
+    width: calc(57%);
+/*     border-radius: 10px; */
+    text-align: center;
+/*     overflow: auto; */
+    z-index: -1;
+}
+
+#text_song{
+  margin: 12px;
+}
+
+
+#playlist_content {
+    float:left;
+}
+    
+.text-container {
+    width: fit-content;
+    text-align: left;
+    top:50%;
+    left:50%;
+    transform: translate(10px, 10px);
+}
+.playback_controls{
+  display: block;
+}
+.text {
+    color:#000000;
+}
+
+.but, .but_ {
+    position: relative;
+    margin: 5px;
+    font-size: 12px;
+    height: 25px;
+    width: 25px;
+    border-radius: 12px;
+    outline: none;
+    color: #000000;
+    background: #ffffff;
+}
+
+.but::before, .but::after{
+    content: '';
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    background: linear-gradient(45deg, #ff00ee, #0000ff, #00ff00, #ff0000, #ff00ee, #0000ff, #00ff00, #ffff00, #ff0000);
+    background-size: 400%;
+    max-width: calc(25px+2px);
+    max-height: calc(25px+2px);
+    height: calc(100%);
+    width: calc(100%);
+    border-radius: 12px;
+    z-index: -1;
+    animation: animate 30s linear infinite;
+}
+
+.chars_playlist{
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.audio_button, .time_song {
+    background: #ffffff;
+    color: #000000;
+    font-size: 15px;
+    border: none;
+    outline: none;
+    padding: 0px 15px;
+    height: 30px;
+    width: 50px;
+    line-height: 30px;
+    border-radius: 32px;
+}
+.audio_button:hover{
+    background: #ebffe8;
+}
+#seek {
+    
+    width: 230px;
+}
+
+input[type='range']{
+    -webkit-appearance: none;
+    border: 1px solid #000000;
+    height: 1px;
+    vertical-align: middle;
+    border-radius: 10px;
+    background-color: #232323;
+    outline: none;
+}
+@keyframes animate {
+    0% {
+        background-position: 0 0;
     }
+    50% {
+        background-position: 400% 0;
+    }
+    100% {
+        background-position: 0 0;
+    }
+}
+
+
+/* STYLE SCROLL */
+
+::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 5px;
+    background-color: #ffffff;
+}
+::-webkit-scrollbar
+{
+    width: 12px;
+    background-color: #ffffff;
+}
+::-webkit-scrollbar-thumb
+{
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #E0FFFF;
+}
+
+/* STYLE SCROLL */
+
+
+/* MARQUEE */
+
+@-webkit-keyframes scroll {
+    0% {
+        -webkit-transform: translate(0, 0);
+        transform: translate(0, 0);
+    }
+    100% {
+        -webkit-transform: translate(-100%, 0);
+        transform: translate(-100%, 0)
+    }
+}
+ 
+@-moz-keyframes scroll {
+    0% {
+        -moz-transform: translate(0, 0);
+        transform: translate(0, 0);
+    }
+    100% {
+        -moz-transform: translate(-100%, 0);
+        transform: translate(-100%, 0)
+    }
+}
+ 
+@keyframes scroll {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(-100%, 0)
+    }
+}
+ 
+.marquee {
+    display: block;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+ 
+.marquee span {
+    display: inline-block;
+    padding-left: 100%;
+    -webkit-animation: scroll 15s infinite linear;
+    -moz-animation: scroll 15s infinite linear;
+    animation: scroll 15s infinite linear;
+}
 
     </style>
 </head>
 
 <body>
+<div class="tab">
+          
+          <button class="tablinks" onclick="openCity(event, 'Menu')">Menu <img alt="🏡" class="imgs" src="data:image/png;base64,R0lGODlhDgAPALMMAJkzAGYzAJlmAP9mADOZ/8yZAGbMZgBmAP8zAP8AAACZAP/MAP///wAAAAAAAAAAACH5BAEAAAwALAAAAAAOAA8AAAROkMlJKzOGocSZCJOhGMiycZ8kkkt7phdLLPMmAFPZ7iaXaLvZzPWT8I6FwoS2MBwMzORydqhGlcZW9bCTMhS7bVeh+JIH6AF5Xba43+4IADs="></button>
+          <button class="tablinks" onclick="openCity(event, 'Music')">Music <img alt="📻" class="imgs" src="data:image/png;base64,R0lGODlhDwAPAKIFANbz15flmETIRwqdCgBbAN3t+gAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQJFAAFACwAAAAADwAPAAADPli63K7jySgdrewyQbovmkIACklAoqeuBRG8cAx3AzEEwqALQV17N58tQFMFdTqijbYTOJ/IznNK5bRW2FMCACH5BAkUAAUALAAAAAAPAA8AAANAWLrcruPJKB11IYd1mSBgWHQFQJRbcY5K6L4noc10AA7EEAhDLwQ4XEgXzNlyLmKvdxQuBdAorweSWqUxGKyQAAAh+QQJFAAFACwAAAAADwAPAAADQli63K7jKUEFlLbkEluwH9MtwiAQaMo5RNOuRSrPLRHceI6jAzF8g6Ag0OulfkVfgCdDBoNLH09YqTxR1Wy1RqMVEgAh+QQJFAAFACwAAAAADwAPAAADQli63CpQqOGenS5IzSgTFNh4jUCcaEEuRNOqCirPLRHceI6fAzFog6Ag0OuhfkVfgCdDBoNLH08YiTxP1Wy1RqMVEgAh+QQJFAAFACwAAAAADwAPAAADQVizU/5QuTZjEQ1D+gZR32aNlSUQaCpF4RNSaSx/RGDf+I16Q4AtggAv1hv2dkQh40jwNIGCqJSBklqvp8JsW0gAACH5BAkUAAUALAAAAAAPAA8AAANCKFW6/qyEtgYsVti3r+8eBDoCYZ7YRUBrWpxwvBJBbd+2ORDDNPyCwG536g15AR3M+PsleTqgYEptmqjYbOklkxUSACH5BAkUAAUALAAAAAAPAA8AAAM9GFLc3mK8Iqel19bsthNEKGIPUTKVqK4mEbxwDIcDMShDLgR1Ld49W4CmAuZyQxtNJ2g6jyGndAoqsK6FBAAh+QQFFAAFACwAAAAADwAPAAADOxhS3P5wwMkkjRdDQbovlkM8I8h4aDoSQeu+bjcQgzLcQjDPXr3TARnKd7sFaTKcYMksdpjQKKegqhYSADs=">
+          </button>
+          <button class="tablinks" onclick="openCity(event, 'Donate')">Отзыв и Донат <img alt="😀" class="imgs" src="data:image/png;base64,R0lGODlhDAAPAKIFAJh3AP/zxAAAANyuAP/gaP///wAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQJAAAFACwAAAAADAAPAAADLVi63P6wjEmrDDjrGYj/H0cIIElwpJmeQweC4hu2BGDfnnjjrLvPLtlJUikWEgAh+QQJAAAFACwAAAAADAAPAAADLVi63M4jyllGuDjHQLr3GyF8I7GNJWpaXxu2IAvMdBfS9coReLzDpspk+HAkAAAh+QQJCgAFACwAAAAADAAPAAADLVi6vPMwlhGqvS+QzXkmQhcSWTiaJNWt3+qpQCxvnzynGmG/uUtOkWBjSCQmAAAh+QQJFAAFACwAAAAADAAPAAADLViz3BowyhWIvZcSgTmhnBd+Q4Vh2pmVBOC+lvbCpDmvpvopTV/8wKBwSCwWEgAh+QQJCgAFACwAAAAADAAPAAADLVi6vPMwlhGqvS+QzXkmQhcSWTiaJNWt3+qpQCxvnzynGmG/uUtOkWBjSCQmAAAh+QQFAAAFACwAAAAADAAPAAADLVi63M4jyllGuDjHQLr3GyF8I7GNJWpaXxu2IAvMdBfS9coReLzDpspk+HAkAAA7">
+          </button>
+        </div>
 
-<details><div id="timer"></div>
-    <summary>DONATE <img alt="😀" class="imgs" src="data:image/png;base64,R0lGODlhDAAPAKIFAJh3AP/zxAAAANyuAP/gaP///wAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQJAAAFACwAAAAADAAPAAADLVi63P6wjEmrDDjrGYj/H0cIIElwpJmeQweC4hu2BGDfnnjjrLvPLtlJUikWEgAh+QQJAAAFACwAAAAADAAPAAADLVi63M4jyllGuDjHQLr3GyF8I7GNJWpaXxu2IAvMdBfS9coReLzDpspk+HAkAAAh+QQJCgAFACwAAAAADAAPAAADLVi6vPMwlhGqvS+QzXkmQhcSWTiaJNWt3+qpQCxvnzynGmG/uUtOkWBjSCQmAAAh+QQJFAAFACwAAAAADAAPAAADLViz3BowyhWIvZcSgTmhnBd+Q4Vh2pmVBOC+lvbCpDmvpvopTV/8wKBwSCwWEgAh+QQJCgAFACwAAAAADAAPAAADLVi6vPMwlhGqvS+QzXkmQhcSWTiaJNWt3+qpQCxvnzynGmG/uUtOkWBjSCQmAAAh+QQFAAAFACwAAAAADAAPAAADLVi63M4jyllGuDjHQLr3GyF8I7GNJWpaXxu2IAvMdBfS9coReLzDpspk+HAkAAA7"></summary>
-    <iframe src="https://money.yandex.ru/quickpay/shop-widget?writer=buyer&targets=%D0%9C%D0%BE%D0%B6%D0%BD%D0%BE%20%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%B8%D1%82%D1%8C%20%D0%BE%D1%82%D0%B7%D1%8B%D0%B2.%20%D0%94%D0%BE%D0%BD%D0%B0%D1%82%20--%3E%20%D1%80%D0%B0%D0%B7%D0%B2%D0%B8%D1%82%D0%B8%D0%B5%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0.&targets-hint=%D0%9C%D0%BE%D0%B6%D0%BD%D0%BE%20%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%B8%D1%82%D1%8C%20%D0%BE%D1%82%D0%B7%D1%8B%D0%B2.%20%D0%94%D0%BE%D0%BD%D0%B0%D1%82%20--%3E%20%D1%80%D0%B0%D0%B7%D0%B2%D0%B8%D1%82%D0%B8%D0%B5%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0.&default-sum=&button-text=11&payment-type-choice=on&mobile-payment-type-choice=on&hint=&successURL=&quickpay=shop&account=4100110874666023" width="423" height="226" frameborder="0" allowtransparency="true" scrolling="no"></iframe>
-</details>
+        <div id="Menu" class="tabcontent">
+          
+
+            <details><div id="timer"></div>
+                <summary>Options <img alt="💡" class="imgs" src="data:image/png;base64,R0lGODlhDgAPALMOAMz//8zMmZmZmf//zGaZzP///8yZZv+ZAP8zAP//ZpnM/2ZmZv/MAAAAAP///wAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQJZAAOACwAAAAADgAPAAAEMtDJSSt92F6gyNPOAxRF91liaWqi4nos957oDEoPfD9DYNAWweMn2PV+N8fisUg6n44IACH5BAlkAA4ALAAAAAAOAA8AAAQz0MlJK33Y3sTY086TFAVzfJZYmmgldqz2dif41mDo5eEQGC2L4AEU5B4+IG/xWPCeUEcEACH5BAlkAA4ALAAAAAAOAA8AAAQ80MlJKaIvW3ndSwzzcNVXFMwxTshlhqrTYiC8sl6djl2X77hSrIIZBAw3ouCBFBAnDyPyOVk8FtSs9hkBADs="></summary>
+                <p>
+                    <form name="search">
+                      <img alt="💫" class="imgs" src="data:image/png;base64,R0lGODlhDgAPAKIGAP+ZM/8zzP8Amf9mAP8z/zPMZv///wAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQJFAAGACwAAAAADgAPAAADJWi63DaujTnjolYRMEB+UGUQhFOazYkyaupG7RiPMLnMrP3tVgIAIfkECRQABgAsAAAAAA4ADwAAAyZoutwuzpRphLWsLH2bZoEQeAyGZZHzqWS0Ki+axZJLwSl853yeAAAh+QQJFAAGACwAAAAADgAPAAADJGi63P6GSKjIms8yvOnozSCK1TOCDDAAjaaQ5OZSFUdH9q0vCQAh+QQJFAAGACwAAAAADgAPAAADJmi63P6mSKjKms8yvLPTDVhBYuQIZqcILFuCbfoEQiA3rJFTPJ8AACH5BAkUAAYALAAAAAAOAA8AAAMlaLrc/oZIqMiazzK8s9MNWC1D1wwoejlp2AAD4JKlulKSSO1PAgAh+QQFFAAGACwAAAAADgAPAAADI2i63P6qFOgkbfYJ3IT3zMR8FRMIwSOCYBmKoZoZsFxfeJMAADs=">
+                      URL: <input id="input_url" type="text" class="mytext" size="78" value="https://line-02.ccf4ab51771cacd46d.com/line/eventView?lang=ru&eventId="></input>
+                      <input type="button" id="connect" value="Connect"></input>
+
+                      <input type="text" class="videotext" size="64"></input>
+                      <input type="button" id="watch_video" value="Watch video"></input>
+                      <p>head link for youtube: <em>https://www.youtube.com/embed/</em></p>
+                      <p>head link for fonbet: <em>https://line-02.ccf4ab51771cacd46d.com/line/eventView?lang=ru&eventId=</em></p>
+                    </form>
+                </p>
+            </details>
+            <hr>
+            <!-- Видео -->
+                <div class="video" style="float:right;width:900px;">
+                    <div class="video-box" id="Video"></div>
+                </div>
+
+            <details><div id="TABLE"></div>
+            <summary>TABLE</summary>
+            <p>
+                <div class='table'>
+                    <table border="1">
+                        <tr>
+                            <td class='in'><p>Фолы</p><input type = "text" value=0 name="fouls" size=1 style="text-align: center"><p id="fouls_time"></p></td>
+                            <td class="MATH" id="fouls_math"><p id="fouls_sub"></p></td>
+                            <th class='NO_gif' id='fouls_gif'></th>
+                            <td><canvas id = "Canvas_fouls"></canvas></td>
+                        </tr>
+                        <tr>
+                            <td class='in'><p>Удары в створ</p><input type = "text" value=0 name="SOT" size=1 style="text-align: center"><p id="SOT_time"></p></td>
+                            <td class="MATH" id="SOT_math"><p id="SOT_sub"></p></td>
+                            <th class='NO_gif' id='SOT_gif'></th>
+                            <td><canvas id = "Canvas_SOT"></canvas></td>
+                        </tr>
+                        <tr>
+                            <td class='in'><p>Ауты</p><input type = "text" value=0 name="auts" size=1 style="text-align: center"><p id="auts_time"></p></td>
+                            <td class="MATH" id="auts_math"><p id="auts_sub"></p></td>
+                            <th class='NO_gif' id='auts_gif'></th>
+                            <td><canvas id = "Canvas_auts"></canvas></td>
+                        </tr>
+                        <tr>
+                            <td class='in'><p>Удары от ворот</p><input type = "text" value=0 name="SAT" size=1 style="text-align: center"><p id="SAT_time"></p></td>
+                            <td class="MATH" id="SAT_math"><p id="SAT_sub"></p></td>
+                            <th class='NO_gif' id='SAT_gif'></th>
+                            <td><canvas id = "Canvas_SAT"></canvas></td>
+                        </tr>
+                        <tr>
+                            <td class='in'><p>Угловые</p><input type = "text" value=0 name="corner" size=1 style="text-align: center"><p id="corner_time"></p></td>
+                            <td class="MATH" id="corner_math"><p id="corner_sub"></td>
+                            <th class='NO_gif' id='corner_gif'></th>
+                            <td><canvas id = "Canvas_corner"></canvas></td>
+                        </tr>
+                        <tr>
+                            <td class='in'><p>ЖК</p><input type = "text" value=0 name="ycard" size=1 style="text-align: center"><p id="ycard_time"></p></td>
+                            <td class="MATH" id="ycard_math"><p id="ycard_sub"></p></td>
+                            <th class='NO_gif' id='ycard_gif'></th>
+                            <td><canvas id = "Canvas_ycard"></canvas></td>
+                        </tr>
+                        <tr>
+                            <td class='in'><p>Офсайды</p><input type = "text" value=0 name="ofsaid" size=1 style="text-align: center"><p id="ofsaid_time"></p></td>
+                            <td class="MATH" id="ofsaid_math"><p id="ofsaid_sub"></p></td>
+                            <th class='NO_gif' id='ofsaid_gif'></th>
+                            <td><canvas id = "Canvas_ofsaid"></canvas></td>
+                        </tr>
+                    </table>
+                </div>
+            </p>
+            </details>
+            <hr>
+
+            <details><summary>JSON details</summary><p><div id="stats"></div></p></details>
+
+            <details>
+
+                <summary>Game List</summary>
+                <p>
+                    <div id="game_list">
+                    {% for game in game_list %}
+                        <ul style="list-style-type:circle"><li><button onclick="pasteUrl('{{ game_list[game] }}')">{{ game }}</button></li></ul>
+                    {% endfor %}
+                    </div>
+                </p>
+            </details>
+        
+        </div>
+
+<!-- MUSIC -->
+
+<div id="Music" class="tabcontent">
+        <form name="music_input" id="find_music_container">
+            <input id="find_music" placeholder='Поиск музыки Вконтакте (press Enter) или кнопку >>>' onkeypress='myMusic(event)' type="text" class="music" size="50" value=""></input>
+            <button type="button" id="get_music" onclick="myMusic(event)">🎧</button>
+            <details>
+                <summary>Плейлист по id Вконтакте</summary>
+                <p>
+                    <input placeholder='цифры id press Enter или намжми кнопку >>>' id="find_music_vk_id" onkeypress='' type="text" class="music" size="50" value=""></input>
+                    <button type="button" id="get_music" onclick="">🎧</button>
+                </p>
+            </details>
+        </form>
+        <div class='playlist'>
+
+ <!--            <div id='row_playlist'>
+                <div id='row_playlist_0' url='https://cs4-1v4.vkuseraudio.net/p22/05c6a16d75f156.mp3?extra=lerxovuDaAs-OOsqMf-j8Cgvt57NlBF0sOZbM3YMWLujOBURfA60PzqisbY4Bbz9bWaPcWrv-T01gknZ7qOSnC9dUPH6PHo1q_sdeLR7VocBB5EIcS627BtXS6-8egwh64yAIy23gKHaBrktKiLl7w'>
+                    <div id='playlist_content'>
+                        <button class='but_' id='but_0' info_list='[0, Crystal Dolphin, Engelwood]' onclick="play_choose('https://cs4-1v4.vkuseraudio.net/p22/05c6a16d75f156.mp3?extra=lerxovuDaAs-OOsqMf-j8Cgvt57NlBF0sOZbM3YMWLujOBURfA60PzqisbY4Bbz9bWaPcWrv-T01gknZ7qOSnC9dUPH6PHo1q_sdeLR7VocBB5EIcS627BtXS6-8egwh64yAIy23gKHaBrktKiLl7w', 0)">
+                            <a class="chars_playlist">▶</a>
+                        </button>
+                    </div>
+                    <div id='text_song_0'>Crystal Dolphin - Engelwood</div>
+                </div>
+            </div> -->
+        </div>
+
+        <div class="container-audio">
+            <div class="text-container">
+                <div class="playback_controls">
+                    <button class='audio_button' onclick="skip('back')"><td class="chars">⏮</td></button>
+                    <button class='audio_button' onclick="playpause()"><td class="chars">⏯</td></button>
+                    <button class='audio_button' onclick="stop()"><td class="chars">⏹</td></button>
+                    <button class='audio_button' onclick="skip('fwd')"><td class="chars">⏭</td></button>
+                    <input type="range" oninput="setPos(this.value)" id="seek" value="0" max="">
+                    <a class='time_song'>-:-</a><br><br>
+                    <button class='audio_button' id="mute" onclick="mute()"><td class="chars">🔊</td></button>
+                    <input type="range" id="volume" oninput="setVolume(this.value)" min="0" max="1" step="0.01" value="1">
+                    
+                    <div id='text_song_container' class='marquee'><span id="text_song"></span></div><br>
+                </div><br>
+            </div>
+        </div>
+</div>
+
+<!-- DONATE -->
+
+<div id="Donate" class="tabcontent">
+
+        <iframe src="https://money.yandex.ru/quickpay/shop-widget?writer=buyer&targets=%D0%9C%D0%BE%D0%B6%D0%BD%D0%BE%20%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%B8%D1%82%D1%8C%20%D0%BE%D1%82%D0%B7%D1%8B%D0%B2.%20%D0%94%D0%BE%D0%BD%D0%B0%D1%82%20--%3E%20%D1%80%D0%B0%D0%B7%D0%B2%D0%B8%D1%82%D0%B8%D0%B5%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0.&targets-hint=%D0%9C%D0%BE%D0%B6%D0%BD%D0%BE%20%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%B8%D1%82%D1%8C%20%D0%BE%D1%82%D0%B7%D1%8B%D0%B2.%20%D0%94%D0%BE%D0%BD%D0%B0%D1%82%20--%3E%20%D1%80%D0%B0%D0%B7%D0%B2%D0%B8%D1%82%D0%B8%D0%B5%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0.&default-sum=&button-text=11&payment-type-choice=on&mobile-payment-type-choice=on&hint=&successURL=&quickpay=shop&account=4100110874666023" width="423" height="226" frameborder="0" allowtransparency="true" scrolling="no">
+        </iframe>
+
+</div>
+<script type="text/javascript">
+
     
-<details><div id="timer"></div>
-    <summary>Options</summary>
-    <form name="search">
-      URL: <input type="text" class="mytext" size="78" value="https://line-02.ccf4ab51771cacd46d.com/line/eventView?lang=ru&eventId="></input>
-      <input type="button" id="connect" value="Connect"></input>
+    // Scroll
+document.body.scrollTop = document.body.scrollHeight;
 
-      <input type="text" class="videotext" size="64"></input>
-      <input type="button" id="watch_video" value="Watch video"></input>
-      <p>head link for youtube: <em>https://www.youtube.com/embed/</em></p>
-      <p>head link for fonbet: <em>https://line-02.ccf4ab51771cacd46d.com/line/eventView?lang=ru&eventId=</em></p>
-    </form>
-</details>
-<hr>
-<div class="video" style="float:right;width:900px;">
-  <div class="video-box" id="Video"></div>
-</div>
-<div class='table'>
-    <table border="1">
-        <tr>
-            <td class='in'><p>Фолы</p><input type = "text" value=0 name="fouls" size=1 style="text-align: center"><p id="fouls_time"></p></td>
-            <td class="MATH" id="fouls_math"><p id="fouls_sub"></p></td>
-            <th class='NO_gif' id='fouls_gif'></th>
-            <td><canvas id = "Canvas_fouls"></td>
-        </tr>
-        <tr>
-            <td class='in'><p>Удары в створ</p><input type = "text" value=0 name="SOT" size=1 style="text-align: center"><p id="SOT_time"></p></td>
-            <td class="MATH" id="SOT_math"><p id="SOT_sub"></p></td>
-            <th class='NO_gif' id='SOT_gif'></th>
-            <td><canvas id = "Canvas_SOT"></td>
-        </tr>
-        <tr>
-            <td class='in'><p>Ауты</p><input type = "text" value=0 name="auts" size=1 style="text-align: center"><p id="auts_time"></p></td>
-            <td class="MATH" id="auts_math"><p id="auts_sub"></p></td>
-            <th class='NO_gif' id='auts_gif'></th>
-            <td><canvas id = "Canvas_auts"></td>
-        </tr>
-        <tr>
-            <td class='in'><p>Удары от ворот</p><input type = "text" value=0 name="SAT" size=1 style="text-align: center"><p id="SAT_time"></p></td>
-            <td class="MATH" id="SAT_math"><p id="SAT_sub"></p></td>
-            <th class='NO_gif' id='SAT_gif'></th>
-            <td><canvas id = "Canvas_SAT"></td>
-        </tr>
-        <tr>
-            <td class='in'><p>Угловые</p><input type = "text" value=0 name="corner" size=1 style="text-align: center"><p id="corner_time"></p></td>
-            <td class="MATH" id="corner_math"><p id="corner_sub"></td>
-            <th class='NO_gif' id='corner_gif'></th>
-            <td><canvas id = "Canvas_corner"></td>
-        </tr>
-        <tr>
-            <td class='in'><p>ЖК</p><input type = "text" value=0 name="ycard" size=1 style="text-align: center"><p id="ycard_time"></p></td>
-            <td class="MATH" id="ycard_math"><p id="ycard_sub"></p></td>
-            <th class='NO_gif' id='ycard_gif'></th>
-            <td><canvas id = "Canvas_ycard"></td>
-        </tr>
-        <tr>
-            <td class='in'><p>Офсайды</p><input type = "text" value=0 name="ofsaid" size=1 style="text-align: center"><p id="ofsaid_time"></p></td>
-            <td class="MATH" id="ofsaid_math"><p id="ofsaid_sub"></p></td>
-            <th class='NO_gif' id='ofsaid_gif'></th>
-            <td><canvas id = "Canvas_ofsaid"></td>
-        </tr>
-    </table>
-</div>
-<hr>
-<details><div id="stats"></div></details>
+// ВКЛАДКИ
+function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
 
-<!-- <script type="text/javascript" scr="jquery-3.4.1.min.js"></script> -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
 
-<script>
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += "active";
+};
+
+var song = new Audio();
+var muted = false;
+var vol = 1;
+var index_song = 0;
+song.type = 'audio/mpeg';
+song.src = 'https://cs4-1v4.vkuseraudio.net/p22/05c6a16d75f156.mp3?extra=lerxovuDaAs-OOsqMf-j8Cgvt57NlBF0sOZbM3YMWLujOBURfA60PzqisbY4Bbz9bWaPcWrv-T01gknZ7qOSnC9dUPH6PHo1q_sdeLR7VocBB5EIcS627BtXS6-8egwh64yAIy23gKHaBrktKiLl7w';
+
+function play_choose(url, index) {
+    
+    if (document.getElementById('but_{0}'.f(index)).id != 'but_{0}'.f(index_song)){
+      document.getElementById('but_{0}'.f(index_song)).className = 'but_'
+      // index_song = index
+      }
+
+    // document.getElementById('text_song').text =
+    $('#text_song').text(document.getElementById('text_song_{0}'.f(index)).textContent)
+    document.getElementById('but_{0}'.f(index)).className = 'but'
+    song.src = url;
+    index_song = parseInt(index);
+    $('.time_song').text('{0}:{1}'.f(parseInt(parseInt(song.duration)/60), parseInt(song.duration)%60));
+    song.play()
+};
+
+setInterval(function () {
+    
+    if (song.ended) {
+        if ($('#row_playlist_{0}'.f(index_song+1)).attr('url') != null) {
+            document.getElementById('but_{0}'.f(index_song)).className = 'but_'
+            index_song += 1;
+            document.getElementById('but_{0}'.f(index_song)).className = 'but'
+            song.src = $('#row_playlist_{0}'.f(index_song)).attr('url');
+            song.play();
+            $('#text_song').text(document.getElementById('text_song_{0}'.f(index_song)).textContent)
+        } else {
+            song.src = $('#row_playlist_{0}'.f(index_song)).attr('url');
+            $('.time_song').text('{0}:{1}'.f(parseInt(parseInt(song.duration)/60), parseInt(song.duration)%60));
+            stop();
+        }
+    }
+    if (parseInt(parseInt(song.duration)/60) < 1) {
+        $('.time_song').text('{0}:{1}'.f(0, (parseInt(song.duration) - parseInt(song.currentTime))%60));
+    } else {
+        $('.time_song').text('{0}:{1}'.f(parseInt((parseInt(song.duration) - parseInt(song.currentTime))/60), (parseInt(song.duration) - parseInt(song.currentTime))%60));
+    }
+    
+}, 1000);
+
+function skip(time) {
+    if (time == 'back') {
+        song.currentTime = (song.currentTime - 5);
+        
+    } else if (time == 'fwd') {
+        song.currentTime = (song.currentTime + 5);
+    }
+}
+function playpause() {
+    if (!song.paused) {
+        song.pause();
+    } else {
+        song.play();
+    }
+}
+function stop() {
+    song.pause();
+    song.currentTime = 0;
+    document.getElementById('seek').value = 0;
+    $('.time_song').text('{0}:{1}'.f(parseInt(parseInt(song.duration)/60), parseInt(song.duration)%60));
+}
+function setPos(pos) {
+    song.currentTime = pos;
+    
+}
+function mute() {
+    if (muted) {
+        if (vol!=0) {
+            song.volume = vol;
+            muted = false;
+            document.getElementById('mute').innerHTML = '<td class="chars">🔊</td>';
+        }
+    } else {
+    song.volume = 0;
+    muted = true;
+    document.getElementById('mute').innerHTML = '<td class="chars">🔇</td>';
+    }
+}
+function setVolume(volume) {
+    song.volume = volume;
+    vol = volume;
+    
+    if (vol==0){
+        song.volume = 0;
+        muted = true;
+        document.getElementById('mute').innerHTML = '<td class="chars">🔇</td>';
+    } else {
+        song.volume = vol;
+        muted = false;
+        document.getElementById('mute').innerHTML = '<td class="chars">🔊</td>';
+    }
+}
+song.addEventListener('timeupdate',function() {
+    curtime = parseInt(song.currentTime,10);
+    document.getElementById('seek').max = song.duration;
+    document.getElementById('seek').value = curtime;
+})
+
+
+function pasteUrl(url){
+   document.getElementById('input_url').value = url;
+};
+
+function pasteMusic(SRC){
+  $('#audio').html('<audio autoplay controls="controls" name="media"><source src="{0}" type="audio/mpeg"></audio>'.f(SRC));
+};
+
+// var startPars = setInterval(start, 1000)
+// function start(){
+//     $.ajax({
+//         url: "/",
+//         type: "get"
+//     });
+// };
 
 String.prototype.format = String.prototype.f = function() {
         var s = this,
@@ -149,22 +793,48 @@ String.prototype.format = String.prototype.f = function() {
         return s;
     };
 
-
 var watchButton = document.getElementById("watch_video");
 watchButton.onclick = myWatch;
 
+// var musicButton = document.getElementById("get_music");
+// musicButton.onclick = myMusic;
+
+function myMusic(e) {
+    
+    if (e.key == 'Enter' || e.type == 'click') {
+        var mySearch = $(".music").val();
+        $.ajax({
+                url: "/music",
+                type: "get",
+                data: {jsdata: mySearch},
+                dataType: "json",
+                success: function(response) {
+                  var music_dict = JSON.parse(response.music)
+                  var textTagMusicList = ''
+                      for (var _ in music_dict)
+                      {
+                        textTagMusicList = textTagMusicList +'<div id="row_playlist"><div id="row_playlist_{3}" url={2}><div id="playlist_content"><button class="but_" id="but_{3}" onclick="play_choose({2}, {3})"><a class="chars_playlist_{3}">▶</a></button></div><div id="text_song_{3}">{0} - {1}</div></div></div>'.f(music_dict[_][0], music_dict[_][1], "'{0}'".f(music_dict[_][2]), _);
+                      }
+                  $('.playlist').html(textTagMusicList);
+                    }
+            });
+        }
+
+};
+
 function myWatch() {
+
     var videoWatch = $(".videotext").val();
-    console.log(videoWatch);
+    
   $('#Video').html('<iframe frameborder="1" src="{0}" width="900" height="505" frameborder="0" allow="autoplay; fullscreen" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>'.f(videoWatch));
-      // 
+
 }
 
-function loopConnect(){
-  var myVar = setInterval(connect, 1000);
-}
+// function loopConnect(){
+//   var myVar = setInterval(connect, 1000);
+// }
 
-function connect(){
+setInterval(function(){
     var text = $(".mytext").val();
     if(text.length == 78 ){
         $.ajax({
@@ -175,12 +845,19 @@ function connect(){
             success: function(response) {
               var dict = JSON.parse(response.stats);
               var graf = JSON.parse(response["stats_graf"]);
+              var textTagGameList = ''
+              for (var gaMe in dict['game_list'])
+              {
+                textTagGameList = textTagGameList + '<ul style="list-style-type:circle"><li><button onclick="pasteUrl({1})">{0}</button></li></ul>'.f(gaMe, "'{0}'".f(dict['game_list'][gaMe]));
+              }
+              $('#game_list').html(textTagGameList);
               $("#stats").html(response.stats);
               console.log(response['stats_graf']);
               $("#title").text('{0}   {1}'.f(dict["timer"], dict["game"]));
 
             <!--Спарсеные параметры-->
-                
+                // $("#timer").text(dict["timer"]);
+
                 var timer_sec = parseInt(dict["timer"].split(':')[1]);
                 var timer_min = parseInt(dict["timer"].split(':')[0]);
                 // console.log(parseFloat(timer_min/100), parseFloat(timer_sec/1000))
@@ -197,18 +874,10 @@ function connect(){
                 ['input[name="auts"]', "#auts_time", dict["вброс аутов"], "#auts_math", "#auts_sub", "auts_gif", "вброс аутов"],
                 ['input[name="SAT"]', "#SAT_time", dict["удары от ворот"], "#SAT_math", "#SAT_sub", "SAT_gif", "удары от ворот"],
                 ['input[name="corner"]', "#corner_time", dict["угловые"], "#corner_math", "#corner_sub", "corner_gif", "угловые"],
-                ['input[name="ycard"]', "#ycard_time", dict["желтые карты"], "#ycard_math", "#ycard_sub", "ycard_gif", "желтые карты"],
+                ['input[name="ycard"]', "#ycard_time", dict["жёлтые карты"], "#ycard_math", "#ycard_sub", "ycard_gif", "жёлтые карты"],
                 ['input[name="ofsaid"]', "#ofsaid_time", dict["офсайды"], "#ofsaid_math", "#ofsaid_sub", "ofsaid_gif", "офсайды"]
                                 ]
-                String.prototype.format = String.prototype.f = function() {
-                        var s = this,
-                            i = arguments.length;
 
-                        while (i--) {
-                            s = s.replace(new RegExp('\\{' + i + '\\}', 'gm'), arguments[i]);
-                        }
-                        return s;
-                    };
                 for (var _ in for_input)
                 {
 
@@ -269,7 +938,7 @@ function connect(){
 
                                         [document.getElementById("Canvas_ycard"),
                                         document.getElementById("Canvas_ycard").getContext('2d'),
-                                        "желтые карты - "],
+                                        "жёлтые карты - "],
 
                                         [document.getElementById("Canvas_ofsaid"),
                                         document.getElementById("Canvas_ofsaid").getContext('2d'),
@@ -355,14 +1024,11 @@ function connect(){
             }
           });
   }
-};
-
-var connectButton = document.getElementById("connect");
-connectButton.onclick = loopConnect;
+}, 1000);
+// var connectButton = document.getElementById("connect");
+// connectButton.onclick = loopConnect;
 
 
 </script>
-
 </body>
-
 </html>
