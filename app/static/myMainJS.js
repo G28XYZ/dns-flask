@@ -234,7 +234,7 @@ setInterval(function(){
               $('.game_list').html(textTagGameList);
               $("#stats").html(response.stats);
               console.log(response['stats_graf']);
-              $("#title").text('{0}   {1}'.f(dict["timer"], dict["game"]));
+              $("title").text('{0}   {1}'.f(dict["timer"], dict["game"]));
 
             <!--Спарсеные параметры-->
                 // $("#timer").text(dict["timer"]);
