@@ -47,7 +47,7 @@ var muted = false;
 var vol = 1;
 var index_song = 0;
 song.type = 'audio/mpeg';
-song.src = 'https://cs4-1v4.vkuseraudio.net/p22/05c6a16d75f156.mp3?extra=lerxovuDaAs-OOsqMf-j8Cgvt57NlBF0sOZbM3YMWLujOBURfA60PzqisbY4Bbz9bWaPcWrv-T01gknZ7qOSnC9dUPH6PHo1q_sdeLR7VocBB5EIcS627BtXS6-8egwh64yAIy23gKHaBrktKiLl7w';
+song.src = 'https://cs4-1v4.vkuseraudio.net/p22/f4dfb9263a72cb.mp3?extra=9OR0NPfLqu_StX5_DZBv2z9iksJLrIHPLE7EgH3BBKSimYc-KHbCGmDn67G5hwFsHliKIdzw9zD1OaKrqV_v70nCZE_nih0szUcKM3DDYXGt-gGU_k95VK1uEtoFgJq4RGLGaJaLSDzafUacVGc';
 
 function play_choose(url, index) {
     
