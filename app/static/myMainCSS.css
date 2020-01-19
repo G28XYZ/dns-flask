@@ -27,7 +27,6 @@
     z-index: -1;
     animation: animate 60s linear infinite;
 }
-
 .container-audio::after, .but::after {
     filter: blur(5px);
 }
