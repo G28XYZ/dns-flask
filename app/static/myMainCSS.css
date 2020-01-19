@@ -288,7 +288,7 @@ input[type='range']{
   padding-left: 48px;
   outline: 0;
   cursor: pointer;
-  font-size: 1.4rem;
+  font-size: calc(0.5em + 1vw);
   font-family: Oswald;
   text-transform: uppercase;
   transition: color 300ms ease-in-out;
@@ -344,7 +344,7 @@ input[type='range']{
 .sub-table {
   margin-left: 2em;
   position: relative;
-  font-size: 22px;
+  font-size: calc(0.5em + 1vw);
   border: 1px solid rgba(0,0,0,.1);
   border-radius: 15px;
   box-sizing: border-box;
@@ -570,7 +570,7 @@ a:hover {
     position: relative;
     max-width: auto;
     margin: 0 auto;
-    padding: 0 50px 40px;
+    padding: 1em;
 }
 
 /**/
