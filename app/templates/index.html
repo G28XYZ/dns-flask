@@ -1,7 +1,7 @@
 <!DOCTYPE html> 
 <html>
     <head>
-        <title></title>
+        <title id='title'></title>
         <meta charset="utf-8">
         <link rel="shortcut icon" href="{{ url_for('static', filename='ball_favi.ico') }}">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -14,7 +14,7 @@
             <h1>Football Statistic</h1>         
 
             <!-- tabs -->
-            <div class="pcss3t pcss3t-effect-scale pcss3t-theme-2" id='main_page'>
+            <div class="pcss3t pcss3t-effect-scale pcss3t-theme-1" id='main_page'>
                 <input type="radio" name="pcss3t" checked id="tab1" class="tab-content-first">
                 <label for="tab1"><i class="icon-home"></i>Menu</label>
                 
@@ -28,8 +28,8 @@
                     <li class="tab-content tab-content-first typography" id='page_1'>
                         <h1>Main menu</h1>
                         <div id='main_menu'>
-                            <details id='_option'><div id="timer"></div>
-                                <summary>Options</summary>
+                            <details class='details'><div id="timer"></div>
+                                <summary class='details__summary'>Options</summary>
                             
                                 <form name="search" style="margin: 10px">
                                   <img alt="💫" class="imgs" src="data:image/png;base64,R0lGODlhDgAPAKIGAP+ZM/8zzP8Amf9mAP8z/zPMZv///wAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQJFAAGACwAAAAADgAPAAADJWi63DaujTnjolYRMEB+UGUQhFOazYkyaupG7RiPMLnMrP3tVgIAIfkECRQABgAsAAAAAA4ADwAAAyZoutwuzpRphLWsLH2bZoEQeAyGZZHzqWS0Ki+axZJLwSl853yeAAAh+QQJFAAGACwAAAAADgAPAAADJGi63P6GSKjIms8yvOnozSCK1TOCDDAAjaaQ5OZSFUdH9q0vCQAh+QQJFAAGACwAAAAADgAPAAADJmi63P6mSKjKms8yvLPTDVhBYuQIZqcILFuCbfoEQiA3rJFTPJ8AACH5BAkUAAYALAAAAAAOAA8AAAMlaLrc/oZIqMiazzK8s9MNWC1D1wwoejlp2AAD4JKlulKSSO1PAgAh+QQFFAAGACwAAAAADgAPAAADI2i63P6qFOgkbfYJ3IT3zMR8FRMIwSOCYBmKoZoZsFxfeJMAADs=">
@@ -50,61 +50,120 @@
                                 <div class="video-box" id="Video"></div>
                             </div>
 
-                            <details id='_table'><div id="TABLE"></div>
-                            <summary>TABLE</summary>
+                            <details class='details'><div id="TABLE"></div>
+                              <summary class='details__summary'>TABLE</summary>
                             
-                                <div class='table' style="margin: 10px">
-                                    <table border="1">
-                                        <tr>
-                                            <td class='in'><p style="text-align: center">Фолы</p><input type = "text" value=0 name="fouls" size=1 style="text-align: center"><p id="fouls_time" style="text-align: center"></p></td>
-                                            <td class="MATH" id="fouls_math"><p id="fouls_sub"></p></td>
-                                            <th class='NO_gif' id='fouls_gif'></th>
-                                            <td><canvas id = "Canvas_fouls"></canvas></td>
-                                        </tr>
-                                        <tr>
-                                            <td class='in' style="text-align: center"><p>Удары в створ</p><input type = "text" value=0 name="SOT" size=1 style="text-align: center"><p id="SOT_time" style="text-align: center"></p></td>
-                                            <td class="MATH" id="SOT_math"><p id="SOT_sub" style="text-align: center"></p></td>
-                                            <th class='NO_gif' id='SOT_gif'></th>
-                                            <td><canvas id = "Canvas_SOT"></canvas></td>
-                                        </tr>
-                                        <tr>
-                                            <td class='in'><p style="text-align: center">Ауты</p><input type = "text" value=0 name="auts" size=1 style="text-align: center"><p id="auts_time" style="text-align: center"></p></td>
-                                            <td class="MATH" id="auts_math"><p id="auts_sub" style="text-align: center"></p></td>
-                                            <th class='NO_gif' id='auts_gif'></th>
-                                            <td><canvas id = "Canvas_auts"></canvas></td>
-                                        </tr>
-                                        <tr>
-                                            <td class='in'><p style="text-align: center">Удары от ворот</p><input type = "text" value=0 name="SAT" size=1 style="text-align: center"><p id="SAT_time" style="text-align: center"></p></td>
-                                            <td class="MATH" id="SAT_math"><p id="SAT_sub" style="text-align: center"></p></td>
-                                            <th class='NO_gif' id='SAT_gif'></th>
-                                            <td><canvas id = "Canvas_SAT"></canvas></td>
-                                        </tr>
-                                        <tr>
-                                            <td class='in'><p style="text-align: center">Угловые</p><input type = "text" value=0 name="corner" size=1 style="text-align: center"><p id="corner_time" style="text-align: center"></p></td>
-                                            <td class="MATH" id="corner_math"><p id="corner_sub" style="text-align: center"></td>
-                                            <th class='NO_gif' id='corner_gif'></th>
-                                            <td><canvas id = "Canvas_corner"></canvas></td>
-                                        </tr>
-                                        <tr>
-                                            <td class='in'><p style="text-align: center">ЖК</p><input type = "text" value=0 name="ycard" size=1 style="text-align: center"><p id="ycard_time" style="text-align: center"></p></td>
-                                            <td class="MATH" id="ycard_math"><p id="ycard_sub" style="text-align: center"></p></td>
-                                            <th class='NO_gif' id='ycard_gif'></th>
-                                            <td><canvas id = "Canvas_ycard"></canvas></td>
-                                        </tr>
-                                        <tr>
-                                            <td class='in'><p style="text-align: center">Офсайды</p><input type = "text" value=0 name="ofsaid" size=1 style="text-align: center"><p id="ofsaid_time" style="text-align: center"></p></td>
-                                            <td class="MATH" id="ofsaid_math"><p id="ofsaid_sub" style="text-align: center"></p></td>
-                                            <th class='NO_gif' id='ofsaid_gif'></th>
-                                            <td><canvas id = "Canvas_ofsaid"></canvas></td>
-                                        </tr>
-                                    </table>
-                                </div>
-                        
-                        </details>
+                                    
+                              <div class='table'>
+                                       <details class='sub-table'>
+                                                  <summary class='sub-table_summary'>Фолы</summary>
+                                                  <p class='table-content' style='padding:0.5em;'>
+                                                        <table border="1" >
+                                                        <tr>
+                                                          <td class='in'><p>Фолы</p><input type = "text" value=0 name="fouls" size=1><p id="fouls_time"></p></td>
+                                                          <td class="MATH" id="fouls_math"><p id="fouls_sub"></p></td>
+                                                          <th class='NO_gif' id='fouls_gif'></th>
+                                                          <td><canvas id = "Canvas_fouls"></canvas></td>
+                                                        </tr>
+                                                      </table>
+                                                  </p>
+ 
+                                                  </details>
+                                                 
+                                                 <details class='sub-table'>
+                                                   <summary class='sub-table_summary'>Удары в створ
+                                                   
+                                                   <svg class="control-icon control-icon-expand" width="24" height="24" role="presentation"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#expand-more" /></svg>
+    <svg class="control-icon control-icon-close" width="24" height="24" role="presentation"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close" /></svg>
+                                                   
+                                                   </summary>
+                                                   <p class='table-content' style='padding:0.5em;'>
+                                                         <table border="1">
+                                                        <tr>
+                                                          <td class='in'><p>Удары в створ</p><input type = "text" value=0 name="SOT" size=1><p id="SOT_time"></p></td>
+                                                          <td class="MATH" id="SOT_math"><p id="SOT_sub"></p></td>
+                                                          <th class='NO_gif' id='SOT_gif'></th>
+                                                          <td><canvas id = "Canvas_SOT"></canvas></td>
+                                                        </tr>
+                                                      </table>
+                                                  </p>
+                                                 </details>
+
+                                                <details class='sub-table'>
+                                                  <summary class='sub-table_summary'>Ауты</summary>
+                                                  <p class='table-content' style='padding:0.5em;'>
+                                                        <table border="1">
+                                                        <tr>
+                                                          <td class='in'><p>Ауты</p><input type = "text" value=0 name="auts" size=1><p id="auts_time"></p></td>
+                                                          <td class="MATH" id="auts_math"><p id="auts_sub"></p></td>
+                                                          <th class='NO_gif' id='auts_gif'></th>
+                                                          <td><canvas id = "Canvas_auts"></canvas></td>
+                                                        </tr>
+                                                      </table>
+                                                  </p>
+                                                </details>
+
+                                                <details class='sub-table'>
+                                                  <summary class='sub-table_summary'>Удары от ворот</summary>
+                                                  <p class='table-content' style='padding:0.5em;'>
+                                                        <table border="1">
+                                                        <tr>
+                                                          <td class='in'><p>Удары от ворот</p><input type = "text" value=0 name="SAT" size=1><p id="SAT_time"></p></td>
+                                                          <td class="MATH" id="SAT_math"><p id="SAT_sub"></p></td>
+                                                          <th class='NO_gif' id='SAT_gif'></th>
+                                                          <td><canvas id = "Canvas_SAT"></canvas></td>
+                                                        </tr>
+                                                      </table>
+                                                      </p>
+                                                </details>
+
+                                                <details class='sub-table'>
+                                                  <summary class='sub-table_summary'>Угловый</summary>
+                                                  <p class='table-content' style='padding:0.5em;'>
+                                                        <table border="1">
+                                                        <tr>
+                                                          <td class='in'><p>Угловые</p><input type = "text" value=0 name="corner" size=1><p id="corner_time"></p></td>
+                                                          <td class="MATH" id="corner_math"><p id="corner_sub"></td>
+                                                          <th class='NO_gif' id='corner_gif'></th>
+                                                          <td><canvas id = "Canvas_corner"></canvas></td>
+                                                        </tr>
+                                                      </table>
+                                                      </p>
+                                                </details>
+
+                                                <details class='sub-table'>
+                                                  <summary class='sub-table_summary'>ЖК</summary>
+                                                  <p class='table-content' style='padding:0.5em;'>
+                                                        <table border="1">
+                                                        <tr>
+                                                          <td class='in'><p>ЖК</p><input type = "text" value=0 name="ycard" size=1><p id="ycard_time"></p></td>
+                                                          <td class="MATH" id="ycard_math"><p id="ycard_sub"></p></td>
+                                                          <th class='NO_gif' id='ycard_gif'></th>
+                                                          <td><canvas id = "Canvas_ycard"></canvas></td>
+                                                        </tr>
+                                                      </table>
+                                                      </p>
+                                                </details>
+
+                                                <details class='sub-table'>
+                                                  <summary class='sub-table_summary'>Оффсайды</summary>
+                                                  <p class='table-content' style='padding:0.5em;'>
+                                                        <table border="1">
+                                                        <tr>
+                                                          <td class='in'><p>Офсайды</p><input type = "text" value=0 name="ofsaid" size=1><p id="ofsaid_time"></p></td>
+                                                          <td class="MATH" id="ofsaid_math"><p id="ofsaid_sub"></p></td>
+                                                          <th class='NO_gif' id='ofsaid_gif'></th>
+                                                          <td><canvas id = "Canvas_ofsaid"></canvas></td>
+                                                        </tr>
+                                                    </table>
+                                                </p>
+                                                </details>
+                              </div>
+                          </details>
                         <hr>
 
-                        <details id='_game_list'>
-                            <summary>Game List</summary>
+                        <details class='details'>
+                            <summary class='details__summary'>Game List</summary>
                                 <div class="game_list">
                                 {% for game in game_list %}
                                     <ul><li><button onclick="pasteUrl('{{ game_list[game] }}')">{{ game }}</button></li></ul>
