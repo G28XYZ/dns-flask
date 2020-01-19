@@ -14,7 +14,7 @@ from app import funk
 import threading
 import vk_api
 from vk_api.audio import VkAudio
-
+import psycopg2
 
 sessions = dict()
 url_showEvents = 'https://line-02.ccf4ab51771cacd46d.com/line/mobile/showEvents?lang=ru&lineType=live&skId=1'
@@ -26,9 +26,39 @@ vk_session.auth()
 vk = vk_session.get_api()
 vk_music = VkAudio(vk_session)
 
+dbPath = str(os.environ.get('DATABASE_URL'))
+db_HOST = str(os.environ.get('HOST'))
+db_DATABASE = str(os.environ.get('DATABASE'))
+db_USER = str(os.environ.get('USER'))
+db_PASSWORD = str(os.environ.get('PASSWORD'))
+
+def db_commit():
+    conn = psycopg2.connect(database = db_DATABASE,
+                            user = db_USER,
+                            password = db_PASSWORD,
+                            host = db_HOST,
+                            port = "5432")
+    cur = conn.cursor()
+    try:
+        cur.execute("SELECT _ip_ from DB_IP_test")
+        rows = cur.fetchall()
+        if len(rows) == 0:
+            cur.execute(f"INSERT INTO DB_IP_test (_IP_, FIRST_VISIT, LAST_VISIT) VALUES ('{request.remote_addr}', '{time.ctime()}', '{time.ctime()}')")
+            conn.commit()
+        if str(request.remote_addr) not in [''.join(*list(i)) for i in rows]:
+            cur.execute(f"INSERT INTO DB_IP_test (_IP_, FIRST_VISIT, LAST_VISIT) VALUES ('{request.remote_addr}', '{time.ctime()}', '{time.ctime()}')")
+            conn.commit()
+        else:
+            cur.execute(f"UPDATE DB_IP_test set LAST_VISIT = '{time.ctime()}' where _IP_ = '{request.remote_addr}'")
+            conn.commit()
+    except Exception as e:
+        print(e)
+    conn.close()
+
 @app.route('/')
 def index():
 	try:
+		db_commit()
 		start = {i['name']:f"https://line-02.ccf4ab51771cacd46d.com/line/eventView?lang=ru&eventId={i['id']}" for i in json.loads(requests.get(url_showEvents).text)['events'] if int(i['parentId']) == 0}
 	except Exception as e:
 		print(e)
