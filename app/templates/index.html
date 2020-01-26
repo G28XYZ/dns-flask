@@ -5,239 +5,299 @@
         <meta charset="utf-8">
         <link rel="shortcut icon" href="{{ url_for('static', filename='ball_favi.ico') }}">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='myMainCSS.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='myMainCSS.css') }}?ver={{ time }}">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.1.0/css/font-awesome.min.css"/>
     </head>
     <body>
-        <div class="page">
-            <h1>Football Statistic</h1>         
+        <div id="wrapper" class="visible">
+                <ul>
+                    {% for i in range(1, 26) %}
+                        <li></li>
+                    {% endfor %}
+                </ul>
+        </div>
+        <div id="title_text_container">
+    <p class='text_theme_2' style='text-align:center;'>
+        <i>Football Statistics</i>
+    </p>
+</div>
+<div class="tabs">
+  <input type="radio" name="tabs" id="tab_1" checked="checked">
+  <label class='tab_' for="tab_1"><i class="icon-home"></i>  Main menu</label>
+  <div class="tab">
+    <h1>Main menu</h1>
+    <div id='main_menu'>
+          <details class='details'><div id="timer"></div>
+              <summary class='details__summary'>Options</summary>
+          
+              <form name="search" style="margin: 10px">
+<!--                 <img alt="💫" class="imgs" src="data:image/png;base64,R0lGODlhDgAPAKIGAP+ZM/8zzP8Amf9mAP8z/zPMZv///wAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQJFAAGACwAAAAADgAPAAADJWi63DaujTnjolYRMEB+UGUQhFOazYkyaupG7RiPMLnMrP3tVgIAIfkECRQABgAsAAAAAA4ADwAAAyZoutwuzpRphLWsLH2bZoEQeAyGZZHzqWS0Ki+axZJLwSl853yeAAAh+QQJFAAGACwAAAAADgAPAAADJGi63P6GSKjIms8yvOnozSCK1TOCDDAAjaaQ5OZSFUdH9q0vCQAh+QQJFAAGACwAAAAADgAPAAADJmi63P6mSKjKms8yvLPTDVhBYuQIZqcILFuCbfoEQiA3rJFTPJ8AACH5BAkUAAYALAAAAAAOAA8AAAMlaLrc/oZIqMiazzK8s9MNWC1D1wwoejlp2AAD4JKlulKSSO1PAgAh+QQFFAAGACwAAAAADgAPAAADI2i63P6qFOgkbfYJ3IT3zMR8FRMIwSOCYBmKoZoZsFxfeJMAADs=">
+                URL: <input id="input_url" type="text" class="mytext" size="78" value="https://line-02.ccf4ab51771cacd46d.com/line/eventView?lang=ru&eventId="></input>
+                <input type="button" id="connect" value="Connect"></input> -->
 
-            <!-- tabs -->
-            <div class="pcss3t pcss3t-effect-scale pcss3t-theme-1" id='main_page'>
-                <input type="radio" name="pcss3t" checked id="tab1" class="tab-content-first">
-                <label for="tab1"><i class="icon-home"></i>Menu</label>
-                
-                <input type="radio" name="pcss3t" id="tab2" class="tab-content-2">
-                <label for="tab2"><i class="icon-music"></i>Music</label>
-                
-                <input type="radio" name="pcss3t" id="tab3" class="tab-content-3">
-                <label for="tab3"><i class="icon-smile"></i>Отзыв и Донат</label>
-                
-                <input type="radio" name="pcss3t" id="tab4" class="tab-content-4">
-                <label for="tab4"><i class="icon-comment-alt"></i>Комментарии</label>
-                
-                <ul id='page'>
-                    <li class="tab-content tab-content-first typography" id='page_1'>
-                        <h1>Main menu</h1>
-                        <div id='main_menu'>
-                            <details class='details'><div id="timer"></div>
-                                <summary class='details__summary'>Options</summary>
-                            
-                                <form name="search" style="margin: 10px">
-                                  <img alt="💫" class="imgs" src="data:image/png;base64,R0lGODlhDgAPAKIGAP+ZM/8zzP8Amf9mAP8z/zPMZv///wAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQJFAAGACwAAAAADgAPAAADJWi63DaujTnjolYRMEB+UGUQhFOazYkyaupG7RiPMLnMrP3tVgIAIfkECRQABgAsAAAAAA4ADwAAAyZoutwuzpRphLWsLH2bZoEQeAyGZZHzqWS0Ki+axZJLwSl853yeAAAh+QQJFAAGACwAAAAADgAPAAADJGi63P6GSKjIms8yvOnozSCK1TOCDDAAjaaQ5OZSFUdH9q0vCQAh+QQJFAAGACwAAAAADgAPAAADJmi63P6mSKjKms8yvLPTDVhBYuQIZqcILFuCbfoEQiA3rJFTPJ8AACH5BAkUAAYALAAAAAAOAA8AAAMlaLrc/oZIqMiazzK8s9MNWC1D1wwoejlp2AAD4JKlulKSSO1PAgAh+QQFFAAGACwAAAAADgAPAAADI2i63P6qFOgkbfYJ3IT3zMR8FRMIwSOCYBmKoZoZsFxfeJMAADs=">
-                                  URL: <input id="input_url" type="text" class="mytext" size="78" value="https://line-02.ccf4ab51771cacd46d.com/line/eventView?lang=ru&eventId="></input>
-                                  <input type="button" id="connect" value="Connect"></input>
+                <input type="text" class="videotext" size="64">
+                <input type="button" id="watch_video" value="Watch video">
+                <p>head link for youtube: <em>https://www.youtube.com/embed/</em></p>
+<!--                 <p>head link for fonbet: <em>https://line-02.ccf4ab51771cacd46d.com/line/eventView?lang=ru&eventId=</em></p> -->
+              </form>
+          
+          </details>
+      
+          <hr class="sep-2">
+          <!-- Видео -->
+          <div class="video" style="float:right;width:900px;">
+              <div class="video-box" id="Video"></div>
+          </div>
+              <div style="visibility: hidden; position: absolute; width: 0px; height: 0px;">
+                    <svg xmlns="http://www.w3.org/2000/svg">
+                          <symbol viewBox="0 0 24 24" id="expand-more">
+                              <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/><path d="M0 0h24v24H0z" fill="none"/>
+                          </symbol>
+                          <symbol viewBox="0 0 24 24" id="close">
+                              <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/><path d="M0 0h24v24H0z" fill="none"/>
+                          </symbol>
+                    </svg>
+              </div>
+          <details class='details'><div id="TABLE"></div>
+            <summary class='details__summary'>TABLE</summary>
+          
+                  
+            <div class='table'>
+                     <details class='sub-table'>
+                                <summary class='sub-table_summary'>Фолы
+                                 
+                                     <svg class="control-icon control-icon-expand" width="24" height="24" role="presentation">
+                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#expand-more" /></svg>
+                                     <svg class="control-icon control-icon-close" width="24" height="24" role="presentation">
+                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close" /></svg>
+                                 
+                                </summary>
+                                <p class='table-content' style='padding:0.5em;'>
+                                      <table border="1">
+                                      <tr>
+                                        <td class='in'><p>Фолы</p><input id='input_stat' type = "text" value=0 name="fouls" size=1><p id="fouls_time"></p></td>
+                                        <td class="MATH" id="fouls_math"><div id="fouls_sub"></div></td>
+                                        <th class='NO_gif' id='fouls_gif'></th>
+                                        <td><canvas id = "Canvas_fouls"></canvas></td>
+                                      </tr>
+                                    </table>
+                                </p>
 
-                                  <input type="text" class="videotext" size="64"></input>
-                                  <input type="button" id="watch_video" value="Watch video"></input>
-                                  <p>head link for youtube: <em>https://www.youtube.com/embed/</em></p>
-                                  <p>head link for fonbet: <em>https://line-02.ccf4ab51771cacd46d.com/line/eventView?lang=ru&eventId=</em></p>
-                                </form>
-                            
-                            </details>
-                        
-                            <hr>
-                            <!-- Видео -->
-                            <div class="video" style="float:right;width:900px;">
-                                <div class="video-box" id="Video"></div>
-                            </div>
+                                </details>
+                               
+                               <details class='sub-table'>
+                                 <summary class='sub-table_summary'>Удары в створ
+                                 
+                                     <svg class="control-icon control-icon-expand" width="24" height="24" role="presentation">
+                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#expand-more" /></svg>
+                                     <svg class="control-icon control-icon-close" width="24" height="24" role="presentation">
+                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close" /></svg>
+                                 
+                                 </summary>
+                                 <p class='table-content' style='padding:0.5em;'>
+                                       <table border="1">
+                                      <tr>
+                                        <td class='in'><p>Удары в створ</p><input id='input_stat' type = "text" value=0 name="SOT" size=1><p id="SOT_time"></p></td>
+                                        <td class="MATH" id="SOT_math"><p id="SOT_sub"></p></td>
+                                        <th class='NO_gif' id='SOT_gif'></th>
+                                        <td><canvas id = "Canvas_SOT"></canvas></td>
+                                      </tr>
+                                    </table>
+                                </p>
+                               </details>
 
-                            <details class='details'><div id="TABLE"></div>
-                              <summary class='details__summary'>TABLE</summary>
-                            
-                                    
-                              <div class='table'>
-                                       <details class='sub-table'>
-                                                  <summary class='sub-table_summary'>Фолы</summary>
-                                                  <p class='table-content' style='padding:0.5em;'>
-                                                        <table border="1" >
-                                                        <tr>
-                                                          <td class='in'><p>Фолы</p><input type = "text" value=0 name="fouls" size=1><p id="fouls_time"></p></td>
-                                                          <td class="MATH" id="fouls_math"><p id="fouls_sub"></p></td>
-                                                          <th class='NO_gif' id='fouls_gif'></th>
-                                                          <td><canvas id = "Canvas_fouls"></canvas></td>
-                                                        </tr>
-                                                      </table>
-                                                  </p>
- 
-                                                  </details>
-                                                 
-                                                 <details class='sub-table'>
-                                                   <summary class='sub-table_summary'>Удары в створ
-                                                   
-                                                   <svg class="control-icon control-icon-expand" width="24" height="24" role="presentation"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#expand-more" /></svg>
-    <svg class="control-icon control-icon-close" width="24" height="24" role="presentation"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close" /></svg>
-                                                   
-                                                   </summary>
-                                                   <p class='table-content' style='padding:0.5em;'>
-                                                         <table border="1">
-                                                        <tr>
-                                                          <td class='in'><p>Удары в створ</p><input type = "text" value=0 name="SOT" size=1><p id="SOT_time"></p></td>
-                                                          <td class="MATH" id="SOT_math"><p id="SOT_sub"></p></td>
-                                                          <th class='NO_gif' id='SOT_gif'></th>
-                                                          <td><canvas id = "Canvas_SOT"></canvas></td>
-                                                        </tr>
-                                                      </table>
-                                                  </p>
-                                                 </details>
+                              <details class='sub-table'>
+                                <summary class='sub-table_summary'>Ауты
+                                 
+                                     <svg class="control-icon control-icon-expand" width="24" height="24" role="presentation">
+                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#expand-more" /></svg>
+                                     <svg class="control-icon control-icon-close" width="24" height="24" role="presentation">
+                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close" /></svg>
+                                 
+                                </summary>
+                                <p class='table-content' style='padding:0.5em;'>
+                                      <table border="1">
+                                      <tr>
+                                        <td class='in'><p>Ауты</p><input id='input_stat' type = "text" value=0 name="auts" size=1><p id="auts_time"></p></td>
+                                        <td class="MATH" id="auts_math"><p id="auts_sub"></p></td>
+                                        <th class='NO_gif' id='auts_gif'></th>
+                                        <td><canvas id = "Canvas_auts"></canvas></td>
+                                      </tr>
+                                    </table>
+                                </p>
+                              </details>
 
-                                                <details class='sub-table'>
-                                                  <summary class='sub-table_summary'>Ауты</summary>
-                                                  <p class='table-content' style='padding:0.5em;'>
-                                                        <table border="1">
-                                                        <tr>
-                                                          <td class='in'><p>Ауты</p><input type = "text" value=0 name="auts" size=1><p id="auts_time"></p></td>
-                                                          <td class="MATH" id="auts_math"><p id="auts_sub"></p></td>
-                                                          <th class='NO_gif' id='auts_gif'></th>
-                                                          <td><canvas id = "Canvas_auts"></canvas></td>
-                                                        </tr>
-                                                      </table>
-                                                  </p>
-                                                </details>
+                              <details class='sub-table'>
+                                <summary class='sub-table_summary'>Удары от ворот
+                                 
+                                     <svg class="control-icon control-icon-expand" width="24" height="24" role="presentation">
+                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#expand-more" /></svg>
+                                     <svg class="control-icon control-icon-close" width="24" height="24" role="presentation">
+                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close" /></svg>
+                                 
+                                </summary>
+                                <p class='table-content' style='padding:0.5em;'>
+                                      <table border="1">
+                                      <tr>
+                                        <td class='in'><p>Удары от ворот</p><input id='input_stat' type = "text" value=0 name="SAT" size=1><p id="SAT_time"></p></td>
+                                        <td class="MATH" id="SAT_math"><p id="SAT_sub"></p></td>
+                                        <th class='NO_gif' id='SAT_gif'></th>
+                                        <td><canvas id = "Canvas_SAT"></canvas></td>
+                                      </tr>
+                                    </table>
+                                    </p>
+                              </details>
 
-                                                <details class='sub-table'>
-                                                  <summary class='sub-table_summary'>Удары от ворот</summary>
-                                                  <p class='table-content' style='padding:0.5em;'>
-                                                        <table border="1">
-                                                        <tr>
-                                                          <td class='in'><p>Удары от ворот</p><input type = "text" value=0 name="SAT" size=1><p id="SAT_time"></p></td>
-                                                          <td class="MATH" id="SAT_math"><p id="SAT_sub"></p></td>
-                                                          <th class='NO_gif' id='SAT_gif'></th>
-                                                          <td><canvas id = "Canvas_SAT"></canvas></td>
-                                                        </tr>
-                                                      </table>
-                                                      </p>
-                                                </details>
+                              <details class='sub-table'>
+                                  <summary class='sub-table_summary'>Угловый
+                                 
+                                     <svg class="control-icon control-icon-expand" width="24" height="24" role="presentation">
+                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#expand-more" /></svg>
+                                     <svg class="control-icon control-icon-close" width="24" height="24" role="presentation">
+                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close" /></svg>
+                                 
+                                  </summary>
+                                <p class='table-content' style='padding:0.5em;'>
+                                      <table border="1">
+                                      <tr>
+                                        <td class='in'><p>Угловые</p><input id='input_stat' type = "text" value=0 name="corner" size=1><p id="corner_time"></p></td>
+                                        <td class="MATH" id="corner_math"><p id="corner_sub"></td>
+                                        <th class='NO_gif' id='corner_gif'></th>
+                                        <td><canvas id = "Canvas_corner"></canvas></td>
+                                      </tr>
+                                    </table>
+                                    </p>
+                              </details>
 
-                                                <details class='sub-table'>
-                                                  <summary class='sub-table_summary'>Угловый</summary>
-                                                  <p class='table-content' style='padding:0.5em;'>
-                                                        <table border="1">
-                                                        <tr>
-                                                          <td class='in'><p>Угловые</p><input type = "text" value=0 name="corner" size=1><p id="corner_time"></p></td>
-                                                          <td class="MATH" id="corner_math"><p id="corner_sub"></td>
-                                                          <th class='NO_gif' id='corner_gif'></th>
-                                                          <td><canvas id = "Canvas_corner"></canvas></td>
-                                                        </tr>
-                                                      </table>
-                                                      </p>
-                                                </details>
+                              <details class='sub-table'>
+                                <summary class='sub-table_summary'>ЖК
+                                 
+                                     <svg class="control-icon control-icon-expand" width="24" height="24" role="presentation">
+                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#expand-more" /></svg>
+                                     <svg class="control-icon control-icon-close" width="24" height="24" role="presentation">
+                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close" /></svg>
+                                 
+                                </summary>
+                                <p class='table-content' style='padding:0.5em;'>
+                                      <table border="1">
+                                      <tr>
+                                        <td class='in'>ЖК<br>
+                                          <input id='input_stat' type="text" value=0 name="ycard" size=1>
+                                              <div id="ycard_time"></div>
+                                          </td>
+                                        <td class="MATH" id="ycard_math"><div id="ycard_sub"></div></td>
+                                        <td class='NO_gif' id='ycard_gif'></td>
+                                        <td><canvas id = "Canvas_ycard"></canvas></td>
+                                      </tr>
+                                    </table>
+                                    </p>
+                              </details>
 
-                                                <details class='sub-table'>
-                                                  <summary class='sub-table_summary'>ЖК</summary>
-                                                  <p class='table-content' style='padding:0.5em;'>
-                                                        <table border="1">
-                                                        <tr>
-                                                          <td class='in'><p>ЖК</p><input type = "text" value=0 name="ycard" size=1><p id="ycard_time"></p></td>
-                                                          <td class="MATH" id="ycard_math"><p id="ycard_sub"></p></td>
-                                                          <th class='NO_gif' id='ycard_gif'></th>
-                                                          <td><canvas id = "Canvas_ycard"></canvas></td>
-                                                        </tr>
-                                                      </table>
-                                                      </p>
-                                                </details>
+                              <details class='sub-table'>
+                                <summary class='sub-table_summary'>Оффсайды
+                                 
+                                     <svg class="control-icon control-icon-expand" width="24" height="24" role="presentation">
+                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#expand-more" /></svg>
+                                     <svg class="control-icon control-icon-close" width="24" height="24" role="presentation">
+                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close" /></svg>
+                                 
+                                </summary>
+                                <p class='table-content' style='padding:0.5em;'>
+                                      <table border="1">
+                                      <tr>
+                                        <td class='in'><p>Офсайды</p><input id='input_stat' type = "text" value=0 name="ofsaid" size=1><p id="ofsaid_time"></p></td>
+                                        <td class="MATH" id="ofsaid_math"><p id="ofsaid_sub"></p></td>
+                                        <th class='NO_gif' id='ofsaid_gif'></th>
+                                        <td><canvas id = "Canvas_ofsaid"></canvas></td>
+                                      </tr>
+                                  </table>
+                              </p>
+                              </details>
+                              <br>
+            </div>
+        </details>
+      <hr class="sep-2">
 
-                                                <details class='sub-table'>
-                                                  <summary class='sub-table_summary'>Оффсайды</summary>
-                                                  <p class='table-content' style='padding:0.5em;'>
-                                                        <table border="1">
-                                                        <tr>
-                                                          <td class='in'><p>Офсайды</p><input type = "text" value=0 name="ofsaid" size=1><p id="ofsaid_time"></p></td>
-                                                          <td class="MATH" id="ofsaid_math"><p id="ofsaid_sub"></p></td>
-                                                          <th class='NO_gif' id='ofsaid_gif'></th>
-                                                          <td><canvas id = "Canvas_ofsaid"></canvas></td>
-                                                        </tr>
-                                                    </table>
-                                                </p>
-                                                </details>
-                              </div>
-                          </details>
-                        <hr>
+      <details class='details'>
+          <summary class='details__summary'>Game List</summary>
+              <div class="game_list">
+                  <div class="buttons">
+                        {% for game in game_list %}
+                            <button class='up' onclick="pasteUrl('{{ game_list[game] }}')">{{ game }}</button><br>
+                        {% endfor %}
+                  </div>
+              </div>
+          
+      </details>
+      <br>
+    </div>
+  </div>
+  
+  <input type="radio" name="tabs" id="tab_2">
+  <label class='tab_' for="tab_2"><i class="icon-music"></i>  Music</label>
+  <div class="tab" style="z-index: 1;">
+    <h1>Music</h1>
+    <div id='music'>
+          <form name="music_input" id="find_music_container">
+              <!-- <input id="find_music" placeholder='Поиск музыки Вконтакте (press Enter) или кнопку >>>' onkeypress='myMusic(event)' type="text" class="music" size="50" value=""> -->
+              <label for="inp" class="inp">
+                    <input type="text" id="find_music" placeholder="&nbsp;" onkeypress='myMusic(event)' class="music" value='gil glaze'>
+                    <span class="label">VK MUSIC 🐋</span>
+                    <span class="border"></span>
+              </label>
+              <button type="button" id="get_music" onclick="myMusic(event)" class="bubbly-button">🎧</button>
+          </form>
+          <div class='playlist'>
 
-                        <details class='details'>
-                            <summary class='details__summary'>Game List</summary>
-                                <div class="game_list">
-                                {% for game in game_list %}
-                                    <ul><li><button onclick="pasteUrl('{{ game_list[game] }}')">{{ game }}</button></li></ul>
-                                {% endfor %}
-                                </div>
-                            
-                        </details>
+<!--                            <div id='row_playlist'>
+                  <div id='row_playlist_0' url='https://cs4-1v4.vkuseraudio.net/p22/05c6a16d75f156.mp3?extra=lerxovuDaAs-OOsqMf-j8Cgvt57NlBF0sOZbM3YMWLujOBURfA60PzqisbY4Bbz9bWaPcWrv-T01gknZ7qOSnC9dUPH6PHo1q_sdeLR7VocBB5EIcS627BtXS6-8egwh64yAIy23gKHaBrktKiLl7w'>
+                      <div id='playlist_content'>
+                          <button class='but_' id='but_0' info_list='[0, Crystal Dolphin, Engelwood]' onclick="play_choose('https://cs4-1v4.vkuseraudio.net/p22/05c6a16d75f156.mp3?extra=lerxovuDaAs-OOsqMf-j8Cgvt57NlBF0sOZbM3YMWLujOBURfA60PzqisbY4Bbz9bWaPcWrv-T01gknZ7qOSnC9dUPH6PHo1q_sdeLR7VocBB5EIcS627BtXS6-8egwh64yAIy23gKHaBrktKiLl7w', 0)">
+                              <td class="chars_playlist"><i class="icon-play"></i></td>
+                          </button>
                       </div>
-                    </li>
-                    
-                    <li class="tab-content tab-content-2 typography">
-                        <h1>Music</h1>
-                        <div id='music'>
-                            <form name="music_input" id="find_music_container">
-                                <input id="find_music" placeholder='Поиск музыки Вконтакте (press Enter) или кнопку >>>' onkeypress='myMusic(event)' type="text" class="music" size="50" value=""></input>
-                                <button type="button" id="get_music" onclick="myMusic(event)">🎧</button>
-                            </form>
-                            <div class='playlist'>
+                      <div id='text_song_0'>Crystal Dolphin - Engelwood</div>
+                  </div>
+              </div> -->
+          </div>
 
-                     <div id='row_playlist'>
-                                    <div id='row_playlist_0' url='https://cs4-1v4.vkuseraudio.net/p22/05c6a16d75f156.mp3?extra=lerxovuDaAs-OOsqMf-j8Cgvt57NlBF0sOZbM3YMWLujOBURfA60PzqisbY4Bbz9bWaPcWrv-T01gknZ7qOSnC9dUPH6PHo1q_sdeLR7VocBB5EIcS627BtXS6-8egwh64yAIy23gKHaBrktKiLl7w'>
-                                        <div id='playlist_content'>
-                                            <button class='but_' id='but_0' info_list='[0, Crystal Dolphin, Engelwood]' onclick="play_choose('https://cs4-1v4.vkuseraudio.net/p22/05c6a16d75f156.mp3?extra=lerxovuDaAs-OOsqMf-j8Cgvt57NlBF0sOZbM3YMWLujOBURfA60PzqisbY4Bbz9bWaPcWrv-T01gknZ7qOSnC9dUPH6PHo1q_sdeLR7VocBB5EIcS627BtXS6-8egwh64yAIy23gKHaBrktKiLl7w', 0)">
-                                                <td class="chars_playlist"><i class="icon-play"></i></td>
-                                            </button>
-                                        </div>
-                                        <div id='text_song_0'>Crystal Dolphin - Engelwood</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="container-audio">
-                                <div class="text-container">
-                                    <div class="playback_controls">
-                                        <button class='audio_button' onclick="skip('back')"><td class="chars"><i class="icon-fast-backward"></i></td></button>
-                                        <button class='audio_button' onclick="playpause()"><td class="chars"><i class="icon-play"></i></td></button>
-                                        <button class='audio_button' onclick="stop()"><td class="chars"><i class="icon-stop"></i></td></button>
-                                        <button class='audio_button' onclick="skip('fwd')"><td class="chars"><i class="icon-fast-forward"></i></td></button>
-                                        <input type="range" oninput="setPos(this.value)" id="seek" value="0" max="">
-                                        <a class='time_song'>-:-</a><br><br>
-                                        <button class='audio_button' id="mute" onclick="mute()"><td class="chars">🔊</td></button>
-                                        <input type="range" id="volume" oninput="setVolume(this.value)" min="0" max="1" step="0.01" value="1">
-                                        
-                                        <div id='text_song_container' class='marquee'><span id="text_song"></span></div><br>
-                                    </div><br>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    
-                    <li class="tab-content tab-content-3 typography">
-                        <h1>Donate</h1>
-                        <div id='donate'>
+          <div id="container-audio">
+              <div class="text-container">
+                  <div class="playback_controls">
+                      <button class='audio_button' onclick="skip('back')"><td class="chars"><i class="icon-fast-backward"></i></td></button>
+                      <button class='audio_button' onclick="playpause()" id='playpause' ><td class="chars"><i class="icon-play"></i></td></button>
+                      <button class='audio_button' onclick="stop()"><td class="chars"><i class="icon-stop"></i></td></button>
+                      <button class='audio_button' onclick="skip('fwd')"><td class="chars"><i class="icon-fast-forward"></i></td></button>
+                      <input type="range" oninput="setPos(this.value)" id="seek" value="0" max="">
+                      <a class='time_song'>-:-</a><br><br>
+                      <button class='audio_button' id="mute" onclick="mute()"><td class="chars">🔊</td></button>
+                      <input type="range" id="volume" oninput="setVolume(this.value)" min="0" max="1" step="0.01" value="1">
+                      <div id='text_song_container' class='marquee'><span id="text_song"></span></div><br>
+                  </div><br>
+              </div>
+          </div>
+      </div>
+  </div>
+  
+  <input type="radio" name="tabs" id="tab_3">
+  <label class='tab_' for="tab_3"><i class="icon-smile"></i>  Donate</label>
+  <div class="tab">
+    <h1>Donate</h1>
+    <div id='donate'>
                         <p>В полях <b><i>"Назначение перевода"</i></b> или <b><i>"Комментарий"</i></b> можно написать отзыв или пожелание. В поле "Сумма" введите желаемую сумму перевода. Выберите тип перевода (иконки рядом с полем суммы). Разработчик обязательно откликнется. За откликом можно следить в поле "Комментарии".</p>
                             <iframe src="https://money.yandex.ru/quickpay/shop-widget?writer=buyer&targets=&targets-hint=%E2%9C%85&default-sum=100&button-text=13&payment-type-choice=on&mobile-payment-type-choice=on&comment=on&hint=%E2%9C%85&successURL=&quickpay=shop&account=4100110874666023" width="100%" height="317" frameborder="0" allowtransparency="true" scrolling="no"></iframe>
                   
                         </div>
-                    </li>
-                    <li class="tab-content tab-content-4 typography">
-                        <h1>Comments</h1>
-                        <div id='comment'>
-                            <p>
-                                
-                            </p>
-
-                  
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <script type="text/javascript" src="{{ url_for('static', filename='myMainJS.js') }}"></script>
+  </div>
+  
+  <input type="radio" name="tabs" id="tab_4">
+  <label class='tab_' for="tab_4"><i class="icon-comment-alt"></i>  Comments</label>
+  <div class="tab">
+    <h1>Comments</h1>
+    <p></p>
+  </div>
+</div>
+        <script type="text/javascript" src="{{ url_for('static', filename='myMainJS.js') }}?ver={{ time }}"></script>
     </body>
 </html>
