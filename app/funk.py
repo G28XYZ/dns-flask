@@ -1,6 +1,7 @@
 import requests
 import math
 import json
+import time
 
 param_list_1 = ["1-й тайм угловые",
                 "1-й тайм желтые карты",
@@ -26,9 +27,16 @@ class JsonFon():
 		self.url = ''
 		self.stats = dict()
 		self.dict_graf = dict()
+		self.url_showEvents = 'https://line-02.ccf4ab51771cacd46d.com/line/mobile/showEvents?lang=ru&lineType=live&skId=1'
+
 
 	def parsing_json(self, url):
+		t1 = time.time()
 		self.url = url
+		try:
+			self.stats['game_list'] = {f"Game: {i['name']} |  Score: {i['score']} |  Time: {i['timer']}" :f"https://line-02.ccf4ab51771cacd46d.com/line/eventView?lang=ru&eventId={i['id']}" for i in json.loads(requests.get(self.url_showEvents).text)['events'] if int(i['parentId']) == 0}
+		except Exception as e:
+			print(e)
 
 		json_match_info = json.loads(requests.get(self.url).text)
 
@@ -38,10 +46,10 @@ class JsonFon():
 		self.stats['score'] = json_match_info['events'][0]['score']
 		self.stats['game'] = f"{self.stats['team1']}   {self.stats['score']}   {self.stats['team2']}"
 
-		try:
-			self.stats['scoreComment'] = json_match_info['events'][0]['scoreComment']
-		except Exception as e:
-			print(e)
+		# try:
+		# 	self.stats['scoreComment'] = json_match_info['events'][0]['scoreComment']
+		# except Exception as e:
+		# 	print(e)
 
 		if '1-й тайм' in str(json_match_info['events']):
 			self.T = 1
@@ -52,8 +60,9 @@ class JsonFon():
 
 		for i in range(len(json_match_info['events'])):
 			if self.T:
-				name_param = json_match_info['events'][i]['name']
-				if name_param in param_list_1:
+				# name_param = json_match_info['events'][i]['name']
+				
+				if (name_param := json_match_info['events'][i]['name']) in param_list_1:
 					score = json_match_info['events'][i]['score']
 					tb = json_match_info['events'][i]['subcategories'][0]['quotes'][0]['p']
 					tb_value = json_match_info['events'][i]['subcategories'][0]['quotes'][0]['value']
@@ -84,10 +93,10 @@ class JsonFon():
 					except Exception as e:
 						print(e)
 						
-
 			else:
-				name_param = json_match_info['events'][i]['name']
-				if name_param in param_list_2:
+				# name_param = json_match_info['events'][i]['name']
+
+				if (name_param := json_match_info['events'][i]['name']) in param_list_2:
 					score = json_match_info['events'][i]['score']
 					tb = json_match_info['events'][i]['subcategories'][0]['quotes'][0]['p']
 					tm = json_match_info['events'][i]['subcategories'][0]['quotes'][1]['p']
@@ -117,6 +126,7 @@ class JsonFon():
 					
 					except Exception as e:
 						print(e)
-
-
+					
+		t2 = time.time()
+		print(t2-t1, ' sec')
 		return [self.stats, self.dict_graf]
