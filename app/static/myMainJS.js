@@ -307,14 +307,12 @@ function activate_Timer() {
                   for (var gaMe in dict['game_list']) {
                       try {                  
                             textTagGameList = textTagGameList + '<button class="up" onclick="pasteUrl({1})">{0}</button><br>'.f(gaMe, "'{0}'".f(dict['game_list'][gaMe]));
-                            console.log(textTagGameList);
                               // document.getElementByClassName('').innerHTML
                           } catch (e) {
                             console.log(e);
                           };
                       };
                   $('.buttons').html(textTagGameList);
-                  console.log(textTagGameList);
                   // $("#stats").html(response.stats);
                   console.log(response['stats_graf']);
                   $("title").text('{0}   {1}'.f(dict["timer"], dict["game"]));
