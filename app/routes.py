@@ -29,6 +29,7 @@ vk_music = VkAudio(vk_session)
 @app.route('/')
 def index():
 	print(request.remote_addr)
+	start = dict()
 	for i in json.loads(requests.get(url_showEvents).text)['events']:
 		try:
 			if int(i['parentId']) == 0:
