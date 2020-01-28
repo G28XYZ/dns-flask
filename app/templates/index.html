@@ -10,6 +10,37 @@
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.1.0/css/font-awesome.min.css"/>
     </head>
     <body>
+              <!-- The video -->
+        <video muted loop id="myVideo">
+          <source src="{{ url_for('static', filename='sky_1.mp4') }}" type="video/mp4" type="video/mp4">
+        </video>
+
+        <!-- Optional: some overlay text to describe the video -->
+        <div class="content">
+        <!--   <h1>Heading</h1>
+          <p>Lorem ipsum...</p> -->
+          <!-- Use a button to pause/play the video with JavaScript -->
+          <button id="myBtn" onclick="pauseImage()">Play</button>
+        </div>
+
+        <script>
+        // Get the video
+        var video = document.getElementById("myVideo");
+
+        // Get the button
+        var btn = document.getElementById("myBtn");
+
+        // Pause and play the video, and change the button text
+        function pauseImage() {
+          if (video.paused) {
+            video.play();
+            btn.innerHTML = "Pause";
+          } else {
+            video.pause();
+            btn.innerHTML = "Play";
+          }
+        }
+        </script>
         <div id="wrapper" class="visible">
                 <ul>
                     {% for i in range(1, 26) %}
@@ -65,156 +96,156 @@
                   
             <div class='table'>
                      <details class='sub-table'>
-                                <summary class='sub-table_summary'>Фолы
-                                 
-                                     <svg class="control-icon control-icon-expand" width="24" height="24" role="presentation">
-                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#expand-more" /></svg>
-                                     <svg class="control-icon control-icon-close" width="24" height="24" role="presentation">
-                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close" /></svg>
-                                 
-                                </summary>
-                                <p class='table-content' style='padding:0.5em;'>
-                                      <table border="1">
-                                      <tr>
-                                        <td class='in'><p>Фолы</p><input id='input_stat' type = "text" value=0 name="fouls" size=1><p id="fouls_time"></p></td>
-                                        <td class="MATH" id="fouls_math"><div id="fouls_sub"></div></td>
-                                        <th class='NO_gif' id='fouls_gif'></th>
-                                        <td><canvas id = "Canvas_fouls"></canvas></td>
-                                      </tr>
-                                    </table>
+                            <summary class='sub-table_summary'>Фолы   <sup class='fouls' id='math_preview'></sup>
+                             
+                                 <svg class="control-icon control-icon-expand" width="24" height="24" role="presentation">
+                                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#expand-more" /></svg>
+                                 <svg class="control-icon control-icon-close" width="24" height="24" role="presentation">
+                                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close" /></svg>
+                             
+                            </summary>
+                            <p class='table-content' style='padding:0.5em;'>
+                                  <table border="1">
+                                  <tr>
+                                    <td class='in'><p>Фолы</p><input id='input_stat' type = "text" value=0 name="fouls" size=1><p id="fouls_time"></p></td>
+                                    <td class="MATH" id="fouls_math"><div id="fouls_sub"></div></td>
+                                    <th class='NO_gif' id='fouls_gif'></th>
+                                    <td><canvas id = "Canvas_fouls"></canvas></td>
+                                  </tr>
+                                </table>
+                            </p>
+
+                            </details>
+                           
+                           <details class='sub-table'>
+                             <summary class='sub-table_summary'>Удары в створ   <sup id='math_preview'></sup>
+                             
+                                 <svg class="control-icon control-icon-expand" width="24" height="24" role="presentation">
+                                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#expand-more" /></svg>
+                                 <svg class="control-icon control-icon-close" width="24" height="24" role="presentation">
+                                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close" /></svg>
+                             
+                             </summary>
+                             <p class='table-content' style='padding:0.5em;'>
+                                   <table border="1">
+                                  <tr>
+                                    <td class='in'><p>Удары в створ</p><input id='input_stat' type = "text" value=0 name="SOT" size=1><p id="SOT_time"></p></td>
+                                    <td class="MATH" id="SOT_math"><p id="SOT_sub"></p></td>
+                                    <th class='NO_gif' id='SOT_gif'></th>
+                                    <td><canvas id = "Canvas_SOT"></canvas></td>
+                                  </tr>
+                                </table>
+                            </p>
+                           </details>
+
+                          <details class='sub-table'>
+                            <summary class='sub-table_summary'>Ауты   <sup id='math_preview'></sup>
+                             
+                                 <svg class="control-icon control-icon-expand" width="24" height="24" role="presentation">
+                                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#expand-more" /></svg>
+                                 <svg class="control-icon control-icon-close" width="24" height="24" role="presentation">
+                                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close" /></svg>
+                             
+                            </summary>
+                            <p class='table-content' style='padding:0.5em;'>
+                                  <table border="1">
+                                  <tr>
+                                    <td class='in'><p>Ауты</p><input id='input_stat' type = "text" value=0 name="auts" size=1><p id="auts_time"></p></td>
+                                    <td class="MATH" id="auts_math"><p id="auts_sub"></p></td>
+                                    <th class='NO_gif' id='auts_gif'></th>
+                                    <td><canvas id = "Canvas_auts"></canvas></td>
+                                  </tr>
+                                </table>
+                            </p>
+                          </details>
+
+                          <details class='sub-table'>
+                            <summary class='sub-table_summary'>Удары от ворот   <sup id='math_preview'></sup>
+                             
+                                 <svg class="control-icon control-icon-expand" width="24" height="24" role="presentation">
+                                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#expand-more" /></svg>
+                                 <svg class="control-icon control-icon-close" width="24" height="24" role="presentation">
+                                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close" /></svg>
+                             
+                            </summary>
+                            <p class='table-content' style='padding:0.5em;'>
+                                  <table border="1">
+                                  <tr>
+                                    <td class='in'><p>Удары от ворот</p><input id='input_stat' type = "text" value=0 name="SAT" size=1><p id="SAT_time"></p></td>
+                                    <td class="MATH" id="SAT_math"><p id="SAT_sub"></p></td>
+                                    <th class='NO_gif' id='SAT_gif'></th>
+                                    <td><canvas id = "Canvas_SAT"></canvas></td>
+                                  </tr>
+                                </table>
                                 </p>
+                          </details>
 
-                                </details>
-                               
-                               <details class='sub-table'>
-                                 <summary class='sub-table_summary'>Удары в створ
-                                 
-                                     <svg class="control-icon control-icon-expand" width="24" height="24" role="presentation">
-                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#expand-more" /></svg>
-                                     <svg class="control-icon control-icon-close" width="24" height="24" role="presentation">
-                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close" /></svg>
-                                 
-                                 </summary>
-                                 <p class='table-content' style='padding:0.5em;'>
-                                       <table border="1">
-                                      <tr>
-                                        <td class='in'><p>Удары в створ</p><input id='input_stat' type = "text" value=0 name="SOT" size=1><p id="SOT_time"></p></td>
-                                        <td class="MATH" id="SOT_math"><p id="SOT_sub"></p></td>
-                                        <th class='NO_gif' id='SOT_gif'></th>
-                                        <td><canvas id = "Canvas_SOT"></canvas></td>
-                                      </tr>
-                                    </table>
+                          <details class='sub-table'>
+                              <summary class='sub-table_summary'>Угловый   <sup class='corner' id='math_preview'></sup>
+                             
+                                 <svg class="control-icon control-icon-expand" width="24" height="24" role="presentation">
+                                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#expand-more" /></svg>
+                                 <svg class="control-icon control-icon-close" width="24" height="24" role="presentation">
+                                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close" /></svg>
+                             
+                              </summary>
+                            <p class='table-content' style='padding:0.5em;'>
+                                  <table border="1">
+                                  <tr>
+                                    <td class='in'><p>Угловые</p><input id='input_stat' type = "text" value=0 name="corner" size=1><p id="corner_time"></p></td>
+                                    <td class="MATH" id="corner_math"><p id="corner_sub"></td>
+                                    <th class='NO_gif' id='corner_gif'></th>
+                                    <td><canvas id = "Canvas_corner"></canvas></td>
+                                  </tr>
+                                </table>
                                 </p>
-                               </details>
+                          </details>
 
-                              <details class='sub-table'>
-                                <summary class='sub-table_summary'>Ауты
-                                 
-                                     <svg class="control-icon control-icon-expand" width="24" height="24" role="presentation">
-                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#expand-more" /></svg>
-                                     <svg class="control-icon control-icon-close" width="24" height="24" role="presentation">
-                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close" /></svg>
-                                 
-                                </summary>
-                                <p class='table-content' style='padding:0.5em;'>
-                                      <table border="1">
-                                      <tr>
-                                        <td class='in'><p>Ауты</p><input id='input_stat' type = "text" value=0 name="auts" size=1><p id="auts_time"></p></td>
-                                        <td class="MATH" id="auts_math"><p id="auts_sub"></p></td>
-                                        <th class='NO_gif' id='auts_gif'></th>
-                                        <td><canvas id = "Canvas_auts"></canvas></td>
-                                      </tr>
-                                    </table>
+                          <details class='sub-table'>
+                            <summary class='sub-table_summary'>ЖК
+                             
+                                 <svg class="control-icon control-icon-expand" width="24" height="24" role="presentation">
+                                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#expand-more" /></svg>
+                                 <svg class="control-icon control-icon-close" width="24" height="24" role="presentation">
+                                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close" /></svg>
+                             
+                            </summary>
+                            <p class='table-content' style='padding:0.5em;'>
+                                  <table border="1">
+                                  <tr>
+                                    <td class='in'>ЖК<br>
+                                      <input id='input_stat' type="text" value=0 name="ycard" size=1>
+                                          <div id="ycard_time"></div>
+                                      </td>
+                                    <td class="MATH" id="ycard_math"><div id="ycard_sub"></div></td>
+                                    <td class='NO_gif' id='ycard_gif'></td>
+                                    <td><canvas id = "Canvas_ycard"></canvas></td>
+                                  </tr>
+                                </table>
                                 </p>
-                              </details>
+                          </details>
 
-                              <details class='sub-table'>
-                                <summary class='sub-table_summary'>Удары от ворот
-                                 
-                                     <svg class="control-icon control-icon-expand" width="24" height="24" role="presentation">
-                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#expand-more" /></svg>
-                                     <svg class="control-icon control-icon-close" width="24" height="24" role="presentation">
-                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close" /></svg>
-                                 
-                                </summary>
-                                <p class='table-content' style='padding:0.5em;'>
-                                      <table border="1">
-                                      <tr>
-                                        <td class='in'><p>Удары от ворот</p><input id='input_stat' type = "text" value=0 name="SAT" size=1><p id="SAT_time"></p></td>
-                                        <td class="MATH" id="SAT_math"><p id="SAT_sub"></p></td>
-                                        <th class='NO_gif' id='SAT_gif'></th>
-                                        <td><canvas id = "Canvas_SAT"></canvas></td>
-                                      </tr>
-                                    </table>
-                                    </p>
-                              </details>
-
-                              <details class='sub-table'>
-                                  <summary class='sub-table_summary'>Угловый
-                                 
-                                     <svg class="control-icon control-icon-expand" width="24" height="24" role="presentation">
-                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#expand-more" /></svg>
-                                     <svg class="control-icon control-icon-close" width="24" height="24" role="presentation">
-                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close" /></svg>
-                                 
-                                  </summary>
-                                <p class='table-content' style='padding:0.5em;'>
-                                      <table border="1">
-                                      <tr>
-                                        <td class='in'><p>Угловые</p><input id='input_stat' type = "text" value=0 name="corner" size=1><p id="corner_time"></p></td>
-                                        <td class="MATH" id="corner_math"><p id="corner_sub"></td>
-                                        <th class='NO_gif' id='corner_gif'></th>
-                                        <td><canvas id = "Canvas_corner"></canvas></td>
-                                      </tr>
-                                    </table>
-                                    </p>
-                              </details>
-
-                              <details class='sub-table'>
-                                <summary class='sub-table_summary'>ЖК
-                                 
-                                     <svg class="control-icon control-icon-expand" width="24" height="24" role="presentation">
-                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#expand-more" /></svg>
-                                     <svg class="control-icon control-icon-close" width="24" height="24" role="presentation">
-                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close" /></svg>
-                                 
-                                </summary>
-                                <p class='table-content' style='padding:0.5em;'>
-                                      <table border="1">
-                                      <tr>
-                                        <td class='in'>ЖК<br>
-                                          <input id='input_stat' type="text" value=0 name="ycard" size=1>
-                                              <div id="ycard_time"></div>
-                                          </td>
-                                        <td class="MATH" id="ycard_math"><div id="ycard_sub"></div></td>
-                                        <td class='NO_gif' id='ycard_gif'></td>
-                                        <td><canvas id = "Canvas_ycard"></canvas></td>
-                                      </tr>
-                                    </table>
-                                    </p>
-                              </details>
-
-                              <details class='sub-table'>
-                                <summary class='sub-table_summary'>Оффсайды
-                                 
-                                     <svg class="control-icon control-icon-expand" width="24" height="24" role="presentation">
-                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#expand-more" /></svg>
-                                     <svg class="control-icon control-icon-close" width="24" height="24" role="presentation">
-                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close" /></svg>
-                                 
-                                </summary>
-                                <p class='table-content' style='padding:0.5em;'>
-                                      <table border="1">
-                                      <tr>
-                                        <td class='in'><p>Офсайды</p><input id='input_stat' type = "text" value=0 name="ofsaid" size=1><p id="ofsaid_time"></p></td>
-                                        <td class="MATH" id="ofsaid_math"><p id="ofsaid_sub"></p></td>
-                                        <th class='NO_gif' id='ofsaid_gif'></th>
-                                        <td><canvas id = "Canvas_ofsaid"></canvas></td>
-                                      </tr>
-                                  </table>
-                              </p>
-                              </details>
-                              <br>
+                          <details class='sub-table'>
+                            <summary class='sub-table_summary'>Оффсайды
+                             
+                                 <svg class="control-icon control-icon-expand" width="24" height="24" role="presentation">
+                                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#expand-more" /></svg>
+                                 <svg class="control-icon control-icon-close" width="24" height="24" role="presentation">
+                                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close" /></svg>
+                             
+                            </summary>
+                            <p class='table-content' style='padding:0.5em;'>
+                                  <table border="1">
+                                  <tr>
+                                    <td class='in'><p>Офсайды</p><input id='input_stat' type = "text" value=0 name="ofsaid" size=1><p id="ofsaid_time"></p></td>
+                                    <td class="MATH" id="ofsaid_math"><p id="ofsaid_sub"></p></td>
+                                    <th class='NO_gif' id='ofsaid_gif'></th>
+                                    <td><canvas id = "Canvas_ofsaid"></canvas></td>
+                                  </tr>
+                              </table>
+                          </p>
+                          </details>
+                          <br>
             </div>
         </details>
       <hr class="sep-2">
@@ -237,7 +268,36 @@
   <input type="radio" name="tabs" id="tab_2">
   <label class='tab_' for="tab_2"><i class="icon-music"></i>  Music</label>
   <div class="tab" style="z-index: 1;">
-    <h1>Music</h1>
+    <h1>
+      <div id="ui">
+        <div class="ui_text">Music</div>
+        <div class="ui_text">Music</div>
+        <div class="ui_text">Music</div>
+        <div class="ui_text">Music</div>
+        <div class="ui_text">Music</div>
+        <div class="ui_text">Music</div>
+        <div class="ui_text">Music</div>
+        <div class="ui_text">Music</div>
+        <div class="ui_text">Music</div>
+        <div class="ui_text">Music</div>
+        <div class="ui_text">Music</div>
+        <div class="ui_text">Music</div>
+        <div class="ui_text">Music</div>
+        <div class="ui_text">Music</div>
+        <div class="ui_text">Music</div>
+        <div class="ui_text">Music</div>
+        <div class="ui_text">Music</div>
+        <div class="ui_text">Music</div>
+        <div class="ui_text">Music</div>
+        <div class="ui_text">Music</div>
+        <div class="ui_text">Music</div>
+        <div class="ui_text">Music</div>
+        <div class="ui_text">Music</div>
+        <div class="ui_text">Music</div>
+        <div class="ui_text">Music</div>
+        <div class="ui_text">Music</div>
+    </div>
+    </h1>
     <div id='music'>
           <form name="music_input" id="find_music_container">
               <!-- <input id="find_music" placeholder='Поиск музыки Вконтакте (press Enter) или кнопку >>>' onkeypress='myMusic(event)' type="text" class="music" size="50" value=""> -->
@@ -283,7 +343,37 @@
   <input type="radio" name="tabs" id="tab_3">
   <label class='tab_' for="tab_3"><i class="icon-smile"></i>  Donate</label>
   <div class="tab">
-    <h1>Donate</h1>
+    <h1>
+      <div class="stage">
+          <div class="layer"></div>
+          <div class="layer"></div>
+          <div class="layer"></div>
+          <div class="layer"></div>
+          <div class="layer"></div>
+          <div class="layer"></div>
+          <div class="layer"></div>
+          <div class="layer"></div>
+          <div class="layer"></div>
+          <div class="layer"></div>
+          <div class="layer"></div>
+          <div class="layer"></div>
+          <div class="layer"></div>
+          <div class="layer"></div>
+          <div class="layer"></div>
+          <div class="layer"></div>
+          <div class="layer"></div>
+          <div class="layer"></div>
+          <div class="layer"></div>
+          <div class="layer"></div>
+      </div>
+    </h1>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <div id='donate'>
                         <p>В полях <b><i>"Назначение перевода"</i></b> или <b><i>"Комментарий"</i></b> можно написать отзыв или пожелание. В поле "Сумма" введите желаемую сумму перевода. Выберите тип перевода (иконки рядом с полем суммы). Разработчик обязательно откликнется. За откликом можно следить в поле "Комментарии".</p>
                             <iframe src="https://money.yandex.ru/quickpay/shop-widget?writer=buyer&targets=&targets-hint=%E2%9C%85&default-sum=100&button-text=13&payment-type-choice=on&mobile-payment-type-choice=on&comment=on&hint=%E2%9C%85&successURL=&quickpay=shop&account=4100110874666023" width="100%" height="317" frameborder="0" allowtransparency="true" scrolling="no"></iframe>

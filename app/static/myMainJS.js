@@ -307,12 +307,14 @@ function activate_Timer() {
                   for (var gaMe in dict['game_list']) {
                       try {                  
                             textTagGameList = textTagGameList + '<button class="up" onclick="pasteUrl({1})">{0}</button><br>'.f(gaMe, "'{0}'".f(dict['game_list'][gaMe]));
+                            
                               // document.getElementByClassName('').innerHTML
                           } catch (e) {
                             console.log(e);
                           };
                       };
                   $('.buttons').html(textTagGameList);
+                  
                   // $("#stats").html(response.stats);
                   console.log(response['stats_graf']);
                   $("title").text('{0}   {1}'.f(dict["timer"], dict["game"]));
@@ -331,11 +333,11 @@ function activate_Timer() {
                 <!--Переменные для времени-->
                     
                     var for_input = [
-                    ['input[name="fouls"]', "#fouls_time", dict["фолы"], "#fouls_math", "#fouls_sub", "fouls_gif", "фолы"],
+                    ['input[name="fouls"]', "#fouls_time", dict["фолы"], "#fouls_math", "#fouls_sub", "fouls_gif", "фолы", ".fouls"],
                     ['input[name="SOT"]', "#SOT_time", dict["удары в створ"], "#SOT_math", "#SOT_sub", "SOT_gif", "удары в створ"],
                     ['input[name="auts"]', "#auts_time", dict["вброс аутов"], "#auts_math", "#auts_sub", "auts_gif", "вброс аутов"],
                     ['input[name="SAT"]', "#SAT_time", dict["удары от ворот"], "#SAT_math", "#SAT_sub", "SAT_gif", "удары от ворот"],
-                    ['input[name="corner"]', "#corner_time", dict["угловые"], "#corner_math", "#corner_sub", "corner_gif", "угловые"],
+                    ['input[name="corner"]', "#corner_time", dict["угловые"], "#corner_math", "#corner_sub", "corner_gif", "угловые", '.corner'],
                     ['input[name="ycard"]', "#ycard_time", dict["жёлтые карты"], "#ycard_math", "#ycard_sub", "ycard_gif", "желтые карты"],
                     ['input[name="ofsaid"]', "#ofsaid_time", dict["офсайды"], "#ofsaid_math", "#ofsaid_sub", "ofsaid_gif", "офсайды"]
                                     ]
@@ -351,7 +353,10 @@ function activate_Timer() {
                         
                         $(for_input[_][3]).html("<strong>{0}:{1} | {2}</strong><sup> ({5}:{6}) </sup><hr><br><strong>{3}</strong><sup> ({4}) </sup>".f(math_min, math_sec, for_input[_][2], dict[for_input[_][6]+" Total"], dict[for_input[_][6]+" БМ"], dict[for_input[_][6]+" K1"], dict[for_input[_][6]+" K2"]));
                         // $(for_input[_][4]).text(for_input[_][2]);
+                        if (dict[for_input[_][6]] != undefined) {
 
+                            $(for_input[_][7]).html("<strong>{0}:{1} | {2}</strong><sup> ({5}:{6}) </sup><hr><br><strong>{3}</strong><sup> ({4}) </sup>".f(math_min, math_sec, for_input[_][2], dict[for_input[_][6]+" Total"], dict[for_input[_][6]+" БМ"], dict[for_input[_][6]+" K1"], dict[for_input[_][6]+" K2"]));
+                        };
                         
                         if (isNaN(math_min) == false)
                         {

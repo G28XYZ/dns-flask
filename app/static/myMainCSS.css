@@ -2,8 +2,65 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
 /*----------------------------------------------------------------------------*/
+/*                         backround video style                              */
+/*----------------------------------------------------------------------------*/
+
+
+/* Style the video: 100% width and height to cover the entire window */
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100%;
+  z-index: -10;
+}
+
+/* Add some content at the bottom of the video/page */
+.content {
+  position: fixed;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  color: #f1f1f1;
+  padding: 20px;
+}
+
+/* Style the button used to pause/play the video */
+#myBtn {
+  width: 200px;
+  font-size: 18px;
+  padding: 10px;
+  border: none;
+  background: #000;
+  color: #fff;
+  cursor: pointer;
+}
+
+#myBtn:hover {
+  background: #ddd;
+  color: black;
+}
+
+/*----------------------------------------------------------------------------*/
 /*                                  TABS style                                */
 /*----------------------------------------------------------------------------*/
+
+
+body {
+/*  background-image: url('https://images.pexels.com/photos/1171084/pexels-photo-1171084.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'); url('https://images.pexels.com/photos/399187/pexels-photo-399187.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');
+  background-repeat: no-repeat;
+  background-attachment: fixed; 
+  background-size: 100% 100%;*/
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding-bottom: 20vh;
+  font-weight: 300;
+  line-height: 1;
+  max-width: 100rem;
+  margin: 0 auto;
+  font-size: 100%;
+}
+
 
 .tabs {
   display: flex;
@@ -15,7 +72,7 @@
   padding: 1rem 2rem;
   margin-right: 0.2rem;
   cursor: pointer;
-  background: #90CAF9;
+  background: #90caf92b;
   font-weight: bold;
   transition: background ease 0.2s;
 }
@@ -49,17 +106,7 @@
 /**
  * Generic Styling
  */
-body {
-  background: #eee;
-  min-height: 100vh;
-  box-sizing: border-box;
-  padding-bottom: 20vh;
-  font-weight: 300;
-  line-height: 1;
-  max-width: 100rem;
-  margin: 0 auto;
-  font-size: 100%;
-}
+
 
 /*html, body, h1, h2, h3, p, pre {
     margin: 0;
@@ -357,6 +404,7 @@ html, body {
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
   transition: all 0.5s;
+  text-shadow: 2px 2px #000;
 }
 
 #title_text_container > .text_theme_1 > i {
@@ -2017,6 +2065,10 @@ th.YES_gif {
     border-radius: 5px;
 }
 
+#math_preview {
+  font-size: calc(0.3em + 1vw);
+}
+
 hr.sep-2 {
   border: 0; 
   height: 1px; 
@@ -2099,6 +2151,256 @@ hr.sep-2 {
   margin: 0.5em;
   padding: 1em 2em;
 }
+
+/*----------------------------------------------------------------------------*/
+/*                               style for word                               */
+/*----------------------------------------------------------------------------*/
+
+div#ui, div.ui_text {
+  will-change: transform;
+}
+#ui {
+  transform-style: preserve-3d;
+  padding: 2em;
+}
+#ui .ui_text {
+  position: absolute;
+  font-size: 3rem;
+  color: #fff;
+  line-height: 10rem;
+  font-family: 'Anton', sans-serif;
+  margin-left: 35px;
+  mix-blend-mode: screen;
+  transform-style: preserve-3d;
+}
+#ui .ui_text:nth-child(1) {
+  clip-path: polygon(-30% 0, -20% 0, 20% 100%, 0% 100%);
+  animation: wave 2000ms -10000ms ease-in-out infinite alternate;
+}
+#ui .ui_text:nth-child(2) {
+  clip-path: polygon(-25% 0, -15% 0, 25% 100%, 5% 100%);
+  animation: wave 2000ms -9800ms ease-in-out infinite alternate;
+}
+#ui .ui_text:nth-child(3) {
+  clip-path: polygon(-20% 0, -10% 0, 30% 100%, 10% 100%);
+  animation: wave 2000ms -9600ms ease-in-out infinite alternate;
+}
+#ui .ui_text:nth-child(4) {
+  clip-path: polygon(-15% 0, -5% 0, 35% 100%, 15% 100%);
+  animation: wave 2000ms -9400ms ease-in-out infinite alternate;
+}
+#ui .ui_text:nth-child(5) {
+  clip-path: polygon(-10% 0, 0% 0, 40% 100%, 20% 100%);
+  animation: wave 2000ms -9200ms ease-in-out infinite alternate;
+}
+#ui .ui_text:nth-child(6) {
+  clip-path: polygon(-5% 0, 5% 0, 45% 100%, 25% 100%);
+  animation: wave 2000ms -9000ms ease-in-out infinite alternate;
+}
+#ui .ui_text:nth-child(7) {
+  clip-path: polygon(0% 0, 10% 0, 50% 100%, 30% 100%);
+  animation: wave 2000ms -8800ms ease-in-out infinite alternate;
+}
+#ui .ui_text:nth-child(8) {
+  clip-path: polygon(5% 0, 15% 0, 55% 100%, 35% 100%);
+  animation: wave 2000ms -8600ms ease-in-out infinite alternate;
+}
+#ui .ui_text:nth-child(9) {
+  clip-path: polygon(10% 0, 20% 0, 60% 100%, 40% 100%);
+  animation: wave 2000ms -8400ms ease-in-out infinite alternate;
+}
+#ui .ui_text:nth-child(10) {
+  clip-path: polygon(15% 0, 25% 0, 65% 100%, 45% 100%);
+  animation: wave 2000ms -8200ms ease-in-out infinite alternate;
+}
+#ui .ui_text:nth-child(11) {
+  clip-path: polygon(20% 0, 30% 0, 70% 100%, 50% 100%);
+  animation: wave 2000ms -8000ms ease-in-out infinite alternate;
+}
+#ui .ui_text:nth-child(12) {
+  clip-path: polygon(25% 0, 35% 0, 75% 100%, 55% 100%);
+  animation: wave 2000ms -7800ms ease-in-out infinite alternate;
+}
+#ui .ui_text:nth-child(13) {
+  clip-path: polygon(30% 0, 40% 0, 80% 100%, 60% 100%);
+  animation: wave 2000ms -7600ms ease-in-out infinite alternate;
+}
+#ui .ui_text:nth-child(14) {
+  clip-path: polygon(35% 0, 45% 0, 85% 100%, 65% 100%);
+  animation: wave 2000ms -7400ms ease-in-out infinite alternate;
+}
+#ui .ui_text:nth-child(15) {
+  clip-path: polygon(40% 0, 50% 0, 90% 100%, 70% 100%);
+  animation: wave 2000ms -7200ms ease-in-out infinite alternate;
+}
+#ui .ui_text:nth-child(16) {
+  clip-path: polygon(45% 0, 55% 0, 95% 100%, 75% 100%);
+  animation: wave 2000ms -7000ms ease-in-out infinite alternate;
+}
+#ui .ui_text:nth-child(17) {
+  clip-path: polygon(50% 0, 60% 0, 100% 100%, 80% 100%);
+  animation: wave 2000ms -6800ms ease-in-out infinite alternate;
+}
+#ui .ui_text:nth-child(18) {
+  clip-path: polygon(55% 0, 65% 0, 105% 100%, 85% 100%);
+  animation: wave 2000ms -6600ms ease-in-out infinite alternate;
+}
+#ui .ui_text:nth-child(19) {
+  clip-path: polygon(60% 0, 70% 0, 110% 100%, 90% 100%);
+  animation: wave 2000ms -6400ms ease-in-out infinite alternate;
+}
+#ui .ui_text:nth-child(20) {
+  clip-path: polygon(65% 0, 75% 0, 115% 100%, 95% 100%);
+  animation: wave 2000ms -6200ms ease-in-out infinite alternate;
+}
+#ui .ui_text:nth-child(21) {
+  clip-path: polygon(70% 0, 80% 0, 120% 100%, 100% 100%);
+  animation: wave 2000ms -6000ms ease-in-out infinite alternate;
+}
+#ui .ui_text:nth-child(22) {
+  clip-path: polygon(75% 0, 85% 0, 125% 100%, 105% 100%);
+  animation: wave 2000ms -5800ms ease-in-out infinite alternate;
+}
+#ui .ui_text:nth-child(23) {
+  clip-path: polygon(80% 0, 90% 0, 130% 100%, 110% 100%);
+  animation: wave 2000ms -5600ms ease-in-out infinite alternate;
+}
+#ui .ui_text:nth-child(24) {
+  clip-path: polygon(85% 0, 95% 0, 135% 100%, 115% 100%);
+  animation: wave 2000ms -5400ms ease-in-out infinite alternate;
+}
+#ui .ui_text:nth-child(25) {
+  clip-path: polygon(90% 0, 100% 0, 140% 100%, 120% 100%);
+  animation: wave 2000ms -5200ms ease-in-out infinite alternate;
+}
+#ui .ui_text:nth-child(26) {
+  clip-path: polygon(95% 0, 105% 0, 145% 100%, 125% 100%);
+  animation: wave 2000ms -5000ms ease-in-out infinite alternate;
+}
+@keyframes wave {
+  0% {
+    transform: translate(-50%, -50%) scale(0.9) rotateX(20deg) rotateY(20deg) rotateZ(0deg);
+    color: #006445;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.1) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    color: #74ff32;
+  }
+}
+
+
+@import url('//fonts.googleapis.com/css?family=Pacifico&text=Pure');
+@import url('//fonts.googleapis.com/css?family=Roboto:700&text=css');
+@import url('//fonts.googleapis.com/css?family=Kaushan+Script&text=!');
+
+.stage {
+  position: absolute;
+  perspective: 9999px;
+  transform-style: preserve-3d;
+}
+.layer {
+  left: 1em;
+  position: absolute;
+  transform-style: preserve-3d;
+  animation: ಠ_ಠ 5s infinite alternate ease-in-out -1.5s;
+  animation-fill-mode: forwards;
+  transform: rotateY(30deg) rotateX(20deg) translateZ(0);
+}
+.layer:after {
+  font: 35px/0.5 'Pacifico', 'Kaushan Script', Futura, 'Roboto', 'Trebuchet MS', Helvetica, sans-serif;
+  content: 'Donate!\A\A           😁';
+  white-space: pre;
+  position: absolute;
+  top: 20px;
+  color: whitesmoke;
+  letter-spacing: -1px;
+  text-shadow: 2px 0 5px rgba(0, 0, 0, 0.13);
+}
+.layer:nth-child(1):after {
+  transform: translateZ(0px);
+
+}
+.layer:nth-child(2):after {
+  transform: translateZ(-1.5px);
+}
+.layer:nth-child(3):after {
+  transform: translateZ(-3px);
+}
+.layer:nth-child(4):after {
+  transform: translateZ(-4.5px);
+}
+.layer:nth-child(5):after {
+  transform: translateZ(-6px);
+}
+.layer:nth-child(6):after {
+  transform: translateZ(-7.5px);
+}
+.layer:nth-child(7):after {
+  transform: translateZ(-9px);
+}
+.layer:nth-child(8):after {
+  transform: translateZ(-10.5px);
+}
+.layer:nth-child(9):after {
+  transform: translateZ(-12px);
+}
+.layer:nth-child(10):after {
+  transform: translateZ(-13.5px);
+}
+.layer:nth-child(11):after {
+  transform: translateZ(-15px);
+}
+.layer:nth-child(12):after {
+  transform: translateZ(-16.5px);
+}
+.layer:nth-child(13):after {
+  transform: translateZ(-18px);
+}
+.layer:nth-child(14):after {
+  transform: translateZ(-19.5px);
+}
+.layer:nth-child(15):after {
+  transform: translateZ(-21px);
+}
+.layer:nth-child(16):after {
+  transform: translateZ(-22.5px);
+}
+.layer:nth-child(17):after {
+  transform: translateZ(-24px);
+}
+.layer:nth-child(18):after {
+  transform: translateZ(-25.5px);
+}
+.layer:nth-child(19):after {
+  transform: translateZ(-27px);
+}
+.layer:nth-child(20):after {
+  transform: translateZ(-28.5px);
+}
+.layer:nth-child(n + 10):after {
+  -webkit-text-stroke: 3px rgba(0, 0, 0, 0.25);
+}
+.layer:nth-child(n + 11):after {
+  -webkit-text-stroke: 15px dodgerblue;
+  text-shadow: 3px 0 6px #00366b, 2px 2px 2px #002951, 0 3px 3px #00366b;
+}
+.layer:nth-child(n + 12):after {
+  -webkit-text-stroke: 7px #0077ea;
+}
+.layer:last-child:after {
+  -webkit-text-stroke: 7px rgba(0, 0, 0, 0.1);
+}
+.layer:first-child:after {
+  color: #fff;
+  text-shadow: none;
+}
+@keyframes ಠ_ಠ {
+  100% {
+    transform: rotateY(-40deg) rotateX(-43deg);
+  }
+}
+
+
 
 
 /*----------------------------------------------------------------------------*/

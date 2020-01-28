@@ -1,0 +1,172 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <title id='title'></title>
+        <meta charset="utf-8">
+        <link rel="shortcut icon" href="{{ url_for('static', filename='ball_favi.ico') }}">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='myMainCSS.css') }}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.1.0/css/font-awesome.min.css"/>
+    </head>
+    <body>
+        <div class="page">
+            <h1>Football Statistic</h1>         
+
+            <!-- tabs -->
+            <div class="pcss3t pcss3t-effect-scale pcss3t-theme-2" id='main_page'>
+                <input type="radio" name="pcss3t" checked id="tab1" class="tab-content-first">
+                <label for="tab1"><i class="icon-home"></i>Menu</label>
+                
+                <input type="radio" name="pcss3t" id="tab2" class="tab-content-2">
+                <label for="tab2"><i class="icon-music"></i>Music</label>
+                
+                <input type="radio" name="pcss3t" id="tab3" class="tab-content-3">
+                <label for="tab3"><i class="icon-smile"></i>Отзыв и Донат</label>
+                
+                <ul id='page'>
+                    <li class="tab-content tab-content-first typography" id='page_1'>
+                        <h1>Main menu</h1>
+                        <div id='main_menu'>
+                            <details id='_option'><div id="timer"></div>
+                                <summary>Options</summary>
+                            
+                                <form name="search" style="margin: 10px">
+                                  <img alt="💫" class="imgs" src="data:image/png;base64,R0lGODlhDgAPAKIGAP+ZM/8zzP8Amf9mAP8z/zPMZv///wAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQJFAAGACwAAAAADgAPAAADJWi63DaujTnjolYRMEB+UGUQhFOazYkyaupG7RiPMLnMrP3tVgIAIfkECRQABgAsAAAAAA4ADwAAAyZoutwuzpRphLWsLH2bZoEQeAyGZZHzqWS0Ki+axZJLwSl853yeAAAh+QQJFAAGACwAAAAADgAPAAADJGi63P6GSKjIms8yvOnozSCK1TOCDDAAjaaQ5OZSFUdH9q0vCQAh+QQJFAAGACwAAAAADgAPAAADJmi63P6mSKjKms8yvLPTDVhBYuQIZqcILFuCbfoEQiA3rJFTPJ8AACH5BAkUAAYALAAAAAAOAA8AAAMlaLrc/oZIqMiazzK8s9MNWC1D1wwoejlp2AAD4JKlulKSSO1PAgAh+QQFFAAGACwAAAAADgAPAAADI2i63P6qFOgkbfYJ3IT3zMR8FRMIwSOCYBmKoZoZsFxfeJMAADs=">
+                                  URL: <input id="input_url" type="text" class="mytext" size="78" value="https://line-02.ccf4ab51771cacd46d.com/line/eventView?lang=ru&eventId="></input>
+                                  <input type="button" id="connect" value="Connect"></input>
+
+                                  <input type="text" class="videotext" size="64"></input>
+                                  <input type="button" id="watch_video" value="Watch video"></input>
+                                  <p>head link for youtube: <em>https://www.youtube.com/embed/</em></p>
+                                  <p>head link for fonbet: <em>https://line-02.ccf4ab51771cacd46d.com/line/eventView?lang=ru&eventId=</em></p>
+                                </form>
+                            
+                            </details>
+                        
+                            <hr>
+                            <!-- Видео -->
+                            <div class="video" style="float:right;width:900px;">
+                                <div class="video-box" id="Video"></div>
+                            </div>
+
+                            <details id='_table'><div id="TABLE"></div>
+                            <summary>TABLE</summary>
+                            
+                                <div class='table' style="margin: 10px">
+                                    <table border="1">
+                                        <tr>
+                                            <td class='in'><p style="text-align: center">Фолы</p><input type = "text" value=0 name="fouls" size=1 style="text-align: center"><p id="fouls_time" style="text-align: center"></p></td>
+                                            <td class="MATH" id="fouls_math"><p id="fouls_sub"></p></td>
+                                            <th class='NO_gif' id='fouls_gif'></th>
+                                            <td><canvas id = "Canvas_fouls"></canvas></td>
+                                        </tr>
+                                        <tr>
+                                            <td class='in' style="text-align: center"><p>Удары в створ</p><input type = "text" value=0 name="SOT" size=1 style="text-align: center"><p id="SOT_time" style="text-align: center"></p></td>
+                                            <td class="MATH" id="SOT_math"><p id="SOT_sub" style="text-align: center"></p></td>
+                                            <th class='NO_gif' id='SOT_gif'></th>
+                                            <td><canvas id = "Canvas_SOT"></canvas></td>
+                                        </tr>
+                                        <tr>
+                                            <td class='in'><p style="text-align: center">Ауты</p><input type = "text" value=0 name="auts" size=1 style="text-align: center"><p id="auts_time" style="text-align: center"></p></td>
+                                            <td class="MATH" id="auts_math"><p id="auts_sub" style="text-align: center"></p></td>
+                                            <th class='NO_gif' id='auts_gif'></th>
+                                            <td><canvas id = "Canvas_auts"></canvas></td>
+                                        </tr>
+                                        <tr>
+                                            <td class='in'><p style="text-align: center">Удары от ворот</p><input type = "text" value=0 name="SAT" size=1 style="text-align: center"><p id="SAT_time" style="text-align: center"></p></td>
+                                            <td class="MATH" id="SAT_math"><p id="SAT_sub" style="text-align: center"></p></td>
+                                            <th class='NO_gif' id='SAT_gif'></th>
+                                            <td><canvas id = "Canvas_SAT"></canvas></td>
+                                        </tr>
+                                        <tr>
+                                            <td class='in'><p style="text-align: center">Угловые</p><input type = "text" value=0 name="corner" size=1 style="text-align: center"><p id="corner_time" style="text-align: center"></p></td>
+                                            <td class="MATH" id="corner_math"><p id="corner_sub" style="text-align: center"></td>
+                                            <th class='NO_gif' id='corner_gif'></th>
+                                            <td><canvas id = "Canvas_corner"></canvas></td>
+                                        </tr>
+                                        <tr>
+                                            <td class='in'><p style="text-align: center">ЖК</p><input type = "text" value=0 name="ycard" size=1 style="text-align: center"><p id="ycard_time" style="text-align: center"></p></td>
+                                            <td class="MATH" id="ycard_math"><p id="ycard_sub" style="text-align: center"></p></td>
+                                            <th class='NO_gif' id='ycard_gif'></th>
+                                            <td><canvas id = "Canvas_ycard"></canvas></td>
+                                        </tr>
+                                        <tr>
+                                            <td class='in'><p style="text-align: center">Офсайды</p><input type = "text" value=0 name="ofsaid" size=1 style="text-align: center"><p id="ofsaid_time" style="text-align: center"></p></td>
+                                            <td class="MATH" id="ofsaid_math"><p id="ofsaid_sub" style="text-align: center"></p></td>
+                                            <th class='NO_gif' id='ofsaid_gif'></th>
+                                            <td><canvas id = "Canvas_ofsaid"></canvas></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                        
+                        </details>
+                        <hr>
+
+                        <details id='_game_list'>
+                            <summary>Game List</summary>
+                                <div class="game_list">
+                                {% for game in game_list %}
+                                    <ul><li><button onclick="pasteUrl('{{ game_list[game] }}')">{{ game }}</button></li></ul>
+                                {% endfor %}
+                                </div>
+                            
+                        </details>
+                      </div>
+                    </li>
+                    
+                    <li class="tab-content tab-content-2 typography">
+                        <h1>Music</h1>
+                        <div id='music'>
+                            <form name="music_input" id="find_music_container">
+                                <input id="find_music" placeholder='Поиск музыки Вконтакте (press Enter) или кнопку >>>' onkeypress='myMusic(event)' type="text" class="music" size="50" value=""></input>
+                                <button type="button" id="get_music" onclick="myMusic(event)">🎧</button>
+                            </form>
+                            <div class='playlist'>
+
+                     <div id='row_playlist'>
+                                    <div id='row_playlist_0' url='https://cs4-1v4.vkuseraudio.net/p22/05c6a16d75f156.mp3?extra=lerxovuDaAs-OOsqMf-j8Cgvt57NlBF0sOZbM3YMWLujOBURfA60PzqisbY4Bbz9bWaPcWrv-T01gknZ7qOSnC9dUPH6PHo1q_sdeLR7VocBB5EIcS627BtXS6-8egwh64yAIy23gKHaBrktKiLl7w'>
+                                        <div id='playlist_content'>
+                                            <button class='but_' id='but_0' info_list='[0, Crystal Dolphin, Engelwood]' onclick="play_choose('https://cs4-1v4.vkuseraudio.net/p22/05c6a16d75f156.mp3?extra=lerxovuDaAs-OOsqMf-j8Cgvt57NlBF0sOZbM3YMWLujOBURfA60PzqisbY4Bbz9bWaPcWrv-T01gknZ7qOSnC9dUPH6PHo1q_sdeLR7VocBB5EIcS627BtXS6-8egwh64yAIy23gKHaBrktKiLl7w', 0)">
+                                                <td class="chars_playlist"><i class="icon-play"></i></td>
+                                            </button>
+                                        </div>
+                                        <div id='text_song_0'>Crystal Dolphin - Engelwood</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="container-audio">
+                                <div class="text-container">
+                                    <div class="playback_controls">
+                                        <button class='audio_button' onclick="skip('back')"><td class="chars"><i class="icon-fast-backward"></i></td></button>
+                                        <button class='audio_button' onclick="playpause()"><td class="chars"><i class="icon-play"></i></td></button>
+                                        <button class='audio_button' onclick="stop()"><td class="chars"><i class="icon-stop"></i></td></button>
+                                        <button class='audio_button' onclick="skip('fwd')"><td class="chars"><i class="icon-fast-forward"></i></td></button>
+                                        <input type="range" oninput="setPos(this.value)" id="seek" value="0" max="">
+                                        <a class='time_song'>-:-</a><br><br>
+                                        <button class='audio_button' id="mute" onclick="mute()"><td class="chars">🔊</td></button>
+                                        <input type="range" id="volume" oninput="setVolume(this.value)" min="0" max="1" step="0.01" value="1">
+                                        
+                                        <div id='text_song_container' class='marquee'><span id="text_song"></span></div><br>
+                                    </div><br>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <li class="tab-content tab-content-3 typography">
+                        <h1>Donate</h1>
+                        <div id='donate'>
+                          
+                            <iframe src="https://money.yandex.ru/quickpay/shop-widget?writer=buyer&targets=%D0%9C%D0%BE%D0%B6%D0%BD%D0%BE%20%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%B8%D1%82%D1%8C%20%D0%BE%D1%82%D0%B7%D1%8B%D0%B2.%20%D0%94%D0%BE%D0%BD%D0%B0%D1%82%20--%3E%20%D1%80%D0%B0%D0%B7%D0%B2%D0%B8%D1%82%D0%B8%D0%B5%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0.&targets-hint=%D0%9C%D0%BE%D0%B6%D0%BD%D0%BE%20%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%B8%D1%82%D1%8C%20%D0%BE%D1%82%D0%B7%D1%8B%D0%B2.%20%D0%94%D0%BE%D0%BD%D0%B0%D1%82%20--%3E%20%D1%80%D0%B0%D0%B7%D0%B2%D0%B8%D1%82%D0%B8%D0%B5%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0.&default-sum=&button-text=11&payment-type-choice=on&mobile-payment-type-choice=on&hint=&successURL=&quickpay=shop&account=4100110874666023" width="423" height="226" frameborder="0" allowtransparency="true" scrolling="no">
+                            </iframe>
+                  
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <script type="text/javascript" src="{{ url_for('static', filename='myMainJS.js') }}"></script>
+    </body>
+</html>
