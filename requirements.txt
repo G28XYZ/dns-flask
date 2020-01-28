@@ -38,5 +38,6 @@ attrs==19.1.0
 beautifulsoup4==4.8.0
 bs4==0.0.1
 lxml==4.4.1
+vk-api==11.6.1
 parso==0.5.1
 selenium==3.141.0
