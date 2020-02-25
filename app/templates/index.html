@@ -4,6 +4,7 @@
         <title id='title'></title>
         <meta charset="utf-8">
         <meta name="yandex-verification" content="73faa2eecf84d410" />
+        <meta name="google-site-verification" content="PkJzhgyRMGx0Uds-fFRYzbp8m_a8X_IBtEQVLiLX8Y4" />
         <link rel="shortcut icon" href="{{ url_for('static', filename='ball_favi.ico') }}">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='myMainCSS.css') }}?ver={{ time }}">
@@ -23,7 +24,19 @@
           <!-- Use a button to pause/play the video with JavaScript -->
           <button id="myBtn" onclick="pauseImage()">Play</button>
         </div>
+        
+     <!-- Google Analytics -->
+            <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
+            ga('create', 'UA-XXXXX-Y', 'auto');
+            ga('send', 'pageview');
+            </script>
+    <!-- End Google Analytics -->
+        
         <script>
         // Get the video
         var video = document.getElementById("myVideo");
