@@ -100,58 +100,58 @@ def run_loop_thread():
 			name_team = f"{index['team1']} {index['team2']}"
 
 			if index["parentId"] == 0:
-			main_id = index["id"]
+				main_id = index["id"]
 
-			try:
-				if main_id in json_dict["ids"] and int(index["timer"].split(":")[0]) > 79:
-				del json_dict["ids"][main_id]
-				continue
-			except:
-				print()
-
-			if main_id not in json_dict["ids"]:
-				timer = ""
 				try:
-				timer = index["timer"]
-				except Exception as e:
-				print(f"\n\n\n>>>{e}<<<\n\n\n {traceback.format_exc()}")
-				continue
+					if main_id in json_dict["ids"] and int(index["timer"].split(":")[0]) > 79:
+						del json_dict["ids"][main_id]
+						continue
+				except:
+					print()
 
-				if timer != "":
-				if int(timer.split(":")[0]) <= 5 or int(timer.split(":")[0]) == 45:
-					json_dict["ids"][main_id] = dict()
-					json_dict["ids"][main_id]["name_team"] = name_team
-					json_dict["ids"][main_id]["timer"] = timer
+				if main_id not in json_dict["ids"]:
+					timer = ""
+					try:
+						timer = index["timer"]
+					except Exception as e:
+						print(f"\n\n\n>>>{e}<<<\n\n\n {traceback.format_exc()}")
+						continue
+
+					if timer != "":
+						if int(timer.split(":")[0]) <= 5 or int(timer.split(":")[0]) == 45:
+							json_dict["ids"][main_id] = dict()
+							json_dict["ids"][main_id]["name_team"] = name_team
+							json_dict["ids"][main_id]["timer"] = timer
 
 			if main_id in json_dict["ids"]:
 				if int( index["timer"].split(":")[0] ) <= 5 or int( index["timer"].split(":")[0] ) == 45:
-				json_dict["ids"][main_id]["timer"] = index["timer"]
+					json_dict["ids"][main_id]["timer"] = index["timer"]
 
 			try:
-			if name_team == json_dict["ids"][main_id]["name_team"]:
-				if int(json_dict["ids"][main_id]["timer"].split(":")[0]) <= 5:
-				if index["name"] in _list_1:
-					name_param = index["name"].replace("1-й тайм ", "")
-					if name_param not in json_dict["ids"][main_id]:
-					for sub in index["subcategories"]:
-						if sub["name"] == "Тотал":
-						json_dict["ids"][main_id][name_param] = float(sub["quotes"][0]["p"]) - ( int(index["score"].split("-")[0]) + int(index["score"].split("-")[1])) + ( 0.5 if sub["quotes"][1]["value"] >= 1.85 else 0)
+				if name_team == json_dict["ids"][main_id]["name_team"]:
+					if int(json_dict["ids"][main_id]["timer"].split(":")[0]) <= 5:
+						if index["name"] in _list_1:
+							name_param = index["name"].replace("1-й тайм ", "")
+							if name_param not in json_dict["ids"][main_id]:
+								for sub in index["subcategories"]:
+									if sub["name"] == "Тотал":
+										json_dict["ids"][main_id][name_param] = float(sub["quotes"][0]["p"]) - ( int(index["score"].split("-")[0]) + int(index["score"].split("-")[1])) + ( 0.5 if sub["quotes"][1]["value"] >= 1.85 else 0)
 
-				if int(json_dict["ids"][main_id]["timer"].split(":")[0]) == 45:
-				if index["name"] in _list_2:
-					name_param = index["name"]
-					if name_param not in json_dict["ids"][main_id]:
-					for sub in index["subcategories"]:
-						if sub["name"] == "Тотал":
-						json_dict["ids"][main_id][name_param] = float(sub["quotes"][0]["p"]) - ( int(index["score"].split("-")[0]) + int(index["score"].split("-")[1])) + ( 0.5 if sub["quotes"][1]["value"] >= 1.85 else 0)
-
-					if name_param in json_dict["ids"][main_id]:
 					if int(json_dict["ids"][main_id]["timer"].split(":")[0]) == 45:
-						for sub in index["subcategories"]:
-						if sub["name"] == "Тотал":
-							json_dict["ids"][main_id][name_param] = float(sub["quotes"][0]["p"]) - ( int(index["score"].split("-")[0]) + int(index["score"].split("-")[1])) + ( 0.5 if sub["quotes"][1]["value"] >= 1.85 else 0)
+						if index["name"] in _list_2:
+							name_param = index["name"]
+							if name_param not in json_dict["ids"][main_id]:
+								for sub in index["subcategories"]:
+									if sub["name"] == "Тотал":
+										json_dict["ids"][main_id][name_param] = float(sub["quotes"][0]["p"]) - ( int(index["score"].split("-")[0]) + int(index["score"].split("-")[1])) + ( 0.5 if sub["quotes"][1]["value"] >= 1.85 else 0)
+
+						if name_param in json_dict["ids"][main_id]:
+							if int(json_dict["ids"][main_id]["timer"].split(":")[0]) == 45:
+								for sub in index["subcategories"]:
+									if sub["name"] == "Тотал":
+										json_dict["ids"][main_id][name_param] = float(sub["quotes"][0]["p"]) - ( int(index["score"].split("-")[0]) + int(index["score"].split("-")[1])) + ( 0.5 if sub["quotes"][1]["value"] >= 1.85 else 0)
 			except Exception as e:
-			print(f"\n\n\n>>>{e}<<<\n\n\n {traceback.format_exc()}")
+				print(f"\n\n\n>>>{e}<<<\n\n\n {traceback.format_exc()}")
 
 thread_loop = threading.Thread(target=run_loop_thread)
             
