@@ -1,1 +1,1 @@
-web: gunicorn flask_app:app
+web: gunicorn -k geventwebsocket.gunicorn.workers.GeventWebSocketWorker -w 1 flask_app:app
