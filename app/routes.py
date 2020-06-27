@@ -124,9 +124,9 @@ def run_loop_thread():
 							json_dict["ids"][main_id]["name_team"] = name_team
 							json_dict["ids"][main_id]["timer"] = timer
 
-			if main_id in json_dict["ids"]:
-				if int( index["timer"].split(":")[0] ) <= 5 or int( index["timer"].split(":")[0] ) == 45:
-					json_dict["ids"][main_id]["timer"] = index["timer"]
+				if main_id in json_dict["ids"]:
+					if int( index["timer"].split(":")[0] ) <= 5 or int( index["timer"].split(":")[0] ) == 45:
+						json_dict["ids"][main_id]["timer"] = index["timer"]
 
 			try:
 				if name_team == json_dict["ids"][main_id]["name_team"]:
