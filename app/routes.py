@@ -159,8 +159,9 @@ thread_loop = threading.Thread(target=run_loop_thread)
 def total_on_time():
 	global json_dict, _boolean_
 	if _boolean_ == 0:
-	_boolean_ = 1
-	print("\n\nRUN_LOOP\n\n")
-	thread_loop.start()
+		_boolean_ = 1
+		print("\n\nRUN_LOOP\n\n")
+		thread_loop.start()
+					  
 	return render_template( 'index_for_total.html', json_dict=json.dumps(json_dict, ensure_ascii=False) )
 #     return Response(stream_with_context(next(generated_page())))
