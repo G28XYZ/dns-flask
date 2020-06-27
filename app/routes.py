@@ -78,8 +78,11 @@ def run_loop_thread():
 	while True:
 		time.sleep(1)
 		url_events = 'https://line41.bkfon-resource.ru/line/mobile/showEvents?lang=ru&lineType=live&skId=1&scopeMarket=1600'
-
-		html = json.loads(requests.get(url_events).text)
+		html = ""
+		try:
+			html = json.loads(requests.get(url_events).text)
+		except:
+			continue
 
 		_list_1 = ["1-й тайм угловые",
 				"1-й тайм фолы",
