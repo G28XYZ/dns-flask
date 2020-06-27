@@ -72,7 +72,8 @@ def run_loop_thread():
     global json_dict
     while True:
         time.sleep(1)
-
+	url_events = 'https://line41.bkfon-resource.ru/line/mobile/showEvents?lang=ru&lineType=live&skId=1&scopeMarket=1600'
+				      
         html = json.loads(requests.get(url_events).text)
 
         _list_1 = ["1-й тайм угловые",
