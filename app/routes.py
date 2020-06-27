@@ -17,6 +17,8 @@ from vk_api.audio import VkAudio
 
 _boolean_ = 0
 json_dict = dict()
+json_dict["url"] = url_events
+json_dict["ids"] = dict()
 
 sessions = dict()
 url_showEvents = 'https://line41.bkfon-resource.ru/line/mobile/showEvents?lang=ru&lineType=live&skId=1&scopeMarket=1600'
